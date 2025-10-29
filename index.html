@@ -15,20 +15,20 @@
     <meta property="og:url" content="https://soulbound.im">
     <meta property="og:title" content="Digital Provenance: A Thesis | soulbound.im">
     <meta property="og:description" content="A foundational thesis on why &quot;Digital Provenance&quot; is the human-centric successor to the flawed &quot;Soulbound Token&quot; (SBT) metaphor.">
-    <meta property="og:image" content="og-preview.png"> <!-- Updated OG Image -->
+    <meta property="og:image" content="og-preview.png"> <!-- Links to root OG image -->
 
     <!-- 3. Twitter Card -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://soulbound.im">
     <meta property="twitter:title" content="Digital Provenance: A Thesis | soulbound.im">
     <meta property="twitter:description" content="A foundational thesis on why &quot;Digital Provenance&quot; is the human-centric successor to the flawed &quot;Soulbound Token&quot; (SBT) metaphor.">
-    <meta property="twitter:image" content="og-preview.png"> <!-- Updated Twitter Image -->
+    <meta property="twitter:image" content="og-preview.png"> <!-- Links to root Twitter image -->
 
     <!-- 4. Indexing Control -->
     <meta name="robots" content="index, follow">
 
     <!-- Favicon -->
-    <link rel="icon" href="favicon.svg" type="image/svg+xml"> <!-- Updated Favicon -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml"> <!-- Links to root favicon -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
@@ -159,6 +159,28 @@
             padding-left: 0.5rem;
         }
 
+        /* NEW: Style for embedded diagram */
+        .article-diagram {
+            margin: 3rem 0;
+            border: 1px solid var(--border-color);
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        .article-diagram figcaption {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--meta-text-color);
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .article-diagram svg {
+            width: 100%;
+            height: auto;
+        }
+
+
         .footnotes { margin-top: 4rem; padding-top: 2rem; border-top: 2px solid var(--border-color); }
         .footnotes ol { padding-left: 20px; font-size: 0.9rem; color: #555; }
         .footnotes li { margin-bottom: 1rem; }
@@ -271,8 +293,8 @@
 
     <!-- Header / Notice -->
     <div class="working-paper-notice">
-        <p><strong>A Foundational Thesis - Version 1.0</strong><br>
-        Published by <strong>The unearth.im Foundry</strong> | October 29, 2025</p>
+        <p><strong>A Foundational Thesis - Version 1.1</strong><br>
+        Published by <strong>The unearth.im Foundry</strong> | October 29, 2025 (Revised)</p>
     </div>
 
     <div class="container">
@@ -330,7 +352,48 @@
                     <li><strong>It's Technically Myopic:</strong> It describes the <em>limitation</em> (it can't be moved) rather than the <em>benefit</em> (it proves who you are). It's a name that focuses on the "how" of the code, not the "why" of the human experience.</li>
                 </ol>
                 <p>"Soulbound" is a perfect example of an "address," not a "landmark." It is a functional, technical string of characters that points to an idea. It has no poetry, no gravity, and no "soul" of its own.</p>
-                <p>It is possible—and necessary—to do better.</p>
+
+                <!-- NEW: Inserted Diagram -->
+                <figure class="article-diagram">
+                    <svg width="720" height="350" viewBox="0 0 720 350" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <style>
+                            .title-font { font-family: 'Lora', serif; font-weight: 700; font-size: 24px; fill: #2E2E2E; }
+                            .desc-font { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 16px; fill: #5A7D8C; }
+                            .keyword-font { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 16px; }
+                            .keyword-font-sienna { fill: #A95C3D; }
+                            .keyword-font-slate { fill: #5A7D8C; }
+                            .icon-slate { fill: #5A7D8C; }
+                            .icon-sienna { fill: #A95C3D; }
+                        </style>
+                        <g transform="translate(40, 40)">
+                            <text x="0" y="20" class="title-font">Soulbound Token</text>
+                            <g class="icon-slate" transform="translate(0, 60) scale(1.2)">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10 13C10 10.2386 12.2386 8 15 8H20V6H15C11.134 6 8 9.13401 8 13V18H10V13ZM30 13C30 10.2386 27.7614 8 25 8H20V6H25C28.866 6 32 9.13401 32 13V18H30V13ZM12 28C12 29.1046 12.8954 30 14 30H26C27.1046 30 28 29.1046 28 28V22H12V28ZM10 22V28C10 30.2091 11.7909 32 14 32H26C28.2091 32 30 30.2091 30 28V22H10Z" fill="currentColor"/>
+                                <path d="M16 16H24V20H16V16Z" fill="currentColor"/>
+                            </g>
+                            <text x="0" y="140" class="desc-font">A technical metaphor based on a</text>
+                            <text x="0" y="165" class="desc-font">video game mechanic.</text>
+                            <text x="0" y="215" class="keyword-font keyword-font-slate">PASSIVE</text>
+                            <text x="0" y="240" class="keyword-font keyword-font-slate">BINDING</text>
+                            <text x="0" y="265" class="keyword-font keyword-font-slate">DISEMPOWERING</text>
+                        </g>
+                        <line x1="360" y1="40" x2="360" y2="310" stroke="#D1D1D1" stroke-width="1"/>
+                        <g transform="translate(400, 40)">
+                            <text x="0" y="20" class="title-font">Digital Provenance</text>
+                            <g class="icon-sienna" transform="translate(0, 55) scale(1.2)">
+                               <path fill-rule="evenodd" clip-rule="evenodd" d="M24.5 14C24.5 19.799 19.799 24.5 14 24.5C8.20101 24.5 3.5 19.799 3.5 14C3.5 8.20101 8.20101 3.5 14 3.5C19.799 3.5 24.5 8.20101 24.5 14ZM22.5 14C22.5 18.6944 18.6944 22.5 14 22.5C9.30558 22.5 5.5 18.6944 5.5 14C5.5 9.30558 9.30558 5.5 14 5.5C18.6944 5.5 22.5 9.30558 22.5 14Z" fill="currentColor"/>
+                               <path fill-rule="evenodd" clip-rule="evenodd" d="M21.4463 21.4463C21.9344 20.9582 22.7155 20.9582 23.2036 21.4463L30.071 28.3137C30.5591 28.8018 30.5591 29.5829 30.071 30.071C29.5829 30.5591 28.8018 30.5591 28.3137 30.071L21.4463 23.2036C20.9582 22.7155 20.9582 21.9344 21.4463 21.4463Z" fill="currentColor"/>
+                            </g>
+                            <text x="0" y="140" class="desc-font">A humanistic metaphor based on</text>
+                            <text x="0" y="165" class="desc-font">curation and authenticity.</text>
+                            <text x="0" y="215" class="keyword-font keyword-font-sienna">ACTIVE</text>
+                            <text x="0" y="240" class="keyword-font keyword-font-sienna">CURATED</text>
+                            <text x="0" y="265" class="keyword-font keyword-font-sienna">EMPOWERING</text>
+                        </g>
+                    </svg>
+                    <figcaption>A visual comparison of the "Soulbound" and "Provenance" metaphors.</figcaption>
+                </figure>
+                <!-- End Diagram -->
 
                 <h2>Part 3: The Thesis — Digital Provenance for the Self</h2>
                 <p>This is the corrective thesis.</p>
@@ -354,6 +417,16 @@
                     </li>
                 </ol>
                 <p>This is the term that unlocks the human potential of the technology. It's not just a better name. It's the <em>right</em> name.</p>
+                
+                <!-- NEW: Inserted Section -->
+                <h3>Part 3.5: The Principles of Curating Digital Provenance</h3>
+                <p>Adopting the metaphor of "Provenance" implies a shift from passive holding to active curation. The curator of a great collection does not simply accumulate; they select, contextualize, and present. The principles for curating the self are no different:</p>
+                <ul>
+                    <li><strong>The Principle of Intentionality:</strong> The curator decides what to add to their collection. This is the opposite of the current web, where platforms collect data by default. The user must be the one to actively seek and accept a Verifiable Credential.</li>
+                    <li><strong>The Principle of Context:</strong> A credential is not just a data point; it's a story. The curator has the right and the ability to frame their credentials, presenting them not as a sterile list, but as a narrative of their journey.</li>
+                    <li><strong>The Principle of Selective Disclosure:</strong> A museum curator does not display every item in the archive at once. They select what is relevant for a given exhibition. This is the principle of "Veiled Proof"—the curator reveals only the necessary credential for a specific interaction, preserving the privacy and integrity of the rest of their collection.<sup id="ref-5"><a href="#fn-5">[5]</a></sup></li>
+                </ul>
+                <!-- End New Section -->
 
                 <h2>Part 4: The Vision — A World Built on Provenance</h2>
                 <p>What does this reframing unlock? What does a world grounded in "Digital Provenance" actually look like?</p>
