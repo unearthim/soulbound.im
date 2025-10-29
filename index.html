@@ -1,261 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+            
     <!-- 1. Core Page Information -->
     <title>Digital Provenance: A Thesis | soulbound.im</title>
     <meta name="description" content="A foundational thesis on why &quot;Digital Provenance&quot; is the human-centric successor to the flawed &quot;Soulbound Token&quot; (SBT) metaphor.">
+    <meta name="keywords" content="Digital Provenance, Soulbound Token, SBT, Web3 Identity, Verifiable Credentials, Digital Identity, unearth.im, soulbound.im, Digital Sovereignty">
+    <meta name="author" content="unearth.im">
 
     <!-- 2. Open Graph (for Facebook, LinkedIn, etc.) -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://soulbound.im">
     <meta property="og:title" content="Digital Provenance: A Thesis | soulbound.im">
     <meta property="og:description" content="A foundational thesis on why &quot;Digital Provenance&quot; is the human-centric successor to the flawed &quot;Soulbound Token&quot; (SBT) metaphor.">
     <meta property="og:image" content="og-preview.png"> <!-- Updated OG Image -->
-    <meta property="og:url" content="https://soulbound.im">
-    <meta property="og:type" content="article">
 
     <!-- 3. Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Digital Provenance: A Thesis | soulbound.im">
-    <meta name="twitter:description" content="A foundational thesis on why &quot;Digital Provenance&quot; is the human-centric successor to the flawed &quot;Soulbound Token&quot; (SBT) metaphor.">
-    <meta name="twitter:image" content="og-preview.png"> <!-- Updated Twitter Image -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://soulbound.im">
+    <meta property="twitter:title" content="Digital Provenance: A Thesis | soulbound.im">
+    <meta property="twitter:description" content="A foundational thesis on why &quot;Digital Provenance&quot; is the human-centric successor to the flawed &quot;Soulbound Token&quot; (SBT) metaphor.">
+    <meta property="twitter:image" content="og-preview.png"> <!-- Updated Twitter Image -->
 
     <!-- 4. Indexing Control -->
     <meta name="robots" content="index, follow">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="favicon.svg"> <!-- Updated Favicon -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml"> <!-- Updated Favicon -->
 
-    <!-- Styles & Scripts -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0;500;0;600;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        html { scroll-behavior: smooth; } /* Ensure smooth scrolling for anchors */
+        /* Adhering to Brand Guide 3.0: Earth & Ink Palette */
+        :root {
+            --bg-color: #F8F7F4;       /* Earth: Light Parchment */
+            --text-color: #2E2E2E;    /* Ink: Charcoal */
+            --accent-color: #A95C3D;   /* Accent: Burnt Sienna */
+            --meta-text-color: #5A7D8C; /* Accent: Slate Blue */
+            --border-color: #D1D1D1;   /* Ink: Light Gray */
+        }
+
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #F8F7F4; /* Earth: Light Parchment */
-            color: #1A1A1A; /* Ink: Rich Black */
+            font-family: 'Lora', serif; /* The Manuscript font */
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        .font-serif {
+
+        .working-paper-notice {
+            background-color: #fffaf0; /* A light cream background */
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem 2rem;
+            margin: 0 auto; /* Centered, no top margin */
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 1100px;
+        }
+        .working-paper-notice p { margin: 0; padding: 0.5rem 0; }
+        .working-paper-notice strong { font-weight: 600; }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto 4rem auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 4rem;
+        }
+
+        main { flex: 3; }
+        aside { flex: 1; position: sticky; top: 4rem; height: fit-content; }
+        article { max-width: 720px; }
+
+        h1 {
             font-family: 'Lora', serif;
-        }
-        .bg-earth-parchment { background-color: #F8F7F4; }
-        .text-ink-black { color: #2E2E2E; } /* Charcoal text */
-        .text-ink-light { color: #595959; } /* Ink: Medium Gray */
-        .text-ink-lighter { color: #A8A8A8; } /* Ink: Lighter Gray for captions */
-        .border-ink-black { border-color: #2E2E2E; }
-        .border-ink-light { border-color: #D1D1D1; } /* Ink: Light Gray */
-        .hover\:text-ink-accent, .text-ink-accent { color: #A95C3D; } /* Primary Accent: Burnt Sienna */
-        .text-burnt-sienna { color: #A95C3D; } /* Burnt Sienna */
-        .bg-burnt-sienna { background-color: #A95C3D; }
-
-        /* --- Updated Link Styles --- */
-        /* Default link style (e.g., footer) */
-        a {
-            transition: color 0.2s ease;
-            text-decoration: none; /* Remove default underline */
-            color: #595959; /* Ink: Medium Gray */
-        }
-        a:hover {
-            color: #1A1A1A; /* Ink: Rich Black */
-        }
-        /* Default Article body links */
-        .article-body a {
-            text-decoration-line: underline;
-            text-decoration-style: dotted;
-            text-underline-offset: 2px; /* Improve readability */
-            transition: color 0.2s ease, text-decoration-color 0.2s ease;
-            color: #A95C3D; /* Burnt Sienna */
-        }
-        .article-body a:hover {
-            color: #934F35; /* Darker Burnt Sienna */
-        }
-
-        /* Header navigation links (excluding wordmark) */
-        header nav a:not(.wordmark), #mobile-menu a {
-             color: #595959; /* Ink: Medium Gray */
-             text-decoration: none;
-        }
-         header nav a:hover:not(.wordmark), #mobile-menu a:hover {
-             color: #2E2E2E; /* Charcoal */
-         }
-         /* Wordmark link specific style */
-         .wordmark {
-            color: #1A1A1A; /* Ink: Rich Black */
-            text-decoration: none; /* No underline for wordmark */
-         }
-         /* --- CTA Button Styling --- */
-         .article-body a.cta-button { /* Increased specificity to override article link styles */
-            display: inline-block;
-            background-color: #A95C3D; /* Burnt Sienna background */
-            color: #F8F7F4; /* Off-White text */
-            padding: 0.75rem 1.5rem; /* px-6 py-3 */
-            border-radius: 0.5rem; /* rounded-lg */
-            font-weight: 600; /* font-semibold (like btn) */
-            font-size: 1rem; /* text-base */
-            font-family: 'Inter', sans-serif; /* Use UI font */
-            transition: all 0.2s ease-in-out;
-            text-decoration: none !important; /* Ensure no underline from other rules */
-            border: 2px solid #A95C3D; /* Matching border */
-         }
-         .article-body a.cta-button:hover { /* Increased specificity for hover state */
-            background-color: #934F35; /* Slightly darker Burnt Sienna */
-            border-color: #934F35; /* Darker border on hover */
-            color: #F8F7F4 !important; /* Ensure text remains off-white on hover */
-            text-decoration: none !important; /* Ensure no underline appears on hover */
-         }
-
-        /* Article Styling */
-        .article-body h3 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 1.25rem; /* text-xl */
-            margin-top: 2rem; /* mt-8 */
-            margin-bottom: 1rem; /* mb-4 */
-            scroll-margin-top: 5rem; /* Offset for sticky header */
-        }
-         .article-body h4 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 1.125rem; /* text-lg */
-            margin-top: 1.5rem; /* mt-6 */
-            margin-bottom: 0.75rem; /* mb-3 */
-            scroll-margin-top: 5rem; /* Offset for sticky header */
-         }
-        .article-body p {
-            line-height: 1.75; /* leading-relaxed */
-            margin-bottom: 1.5rem; /* mb-6 */
-        }
-        .article-body ul {
-            list-style-type: disc;
-            list-style-position: outside;
-            margin-left: 1.5rem; /* ml-6 */
-            margin-bottom: 1.5rem; /* mb-6 */
-        }
-        .article-body ol {
-            list-style-type: decimal;
-            list-style-position: outside;
-            margin-left: 1.5rem; /* ml-6 */
-            margin-bottom: 1.5rem; /* mb-6 */
-        }
-        .article-body li {
-            margin-bottom: 0.5rem; /* mb-2 */
-            padding-left: 0.5rem; /* pl-2 */
-        }
-        .article-body strong {
-             font-weight: 600;
-        }
-        .article-body em, .article-body i {
-             font-style: italic;
-        }
-        
-        /* Citation Styling */
-        .article-body sup a {
-            text-decoration: none;
-            font-size: 0.75em; /* Smaller text for superscript */
-            vertical-align: super; /* Align properly */
-            margin-left: 2px;
-            color: #A95C3D;
-        }
-        .article-body sup a:hover {
-            text-decoration: underline;
-        }
-        .article-references ol {
-            list-style-type: decimal;
-            list-style-position: outside;
-            margin-left: 1.5rem;
-        }
-        .article-references li {
-            padding-left: 0.5rem;
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
             margin-bottom: 0.5rem;
         }
+        
+        article h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        article h3 { 
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem; 
+            font-weight: 700;
+            border-bottom: none; 
+            margin-top: 2rem; 
+            margin-bottom: 1rem;
+        }
 
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--meta-text-color);
+            margin-bottom: 3rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .intro-summary {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--meta-text-color); /* Using Slate Blue for emphasis */
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
 
-        /* --- Mobile Navigation --- */
-         #mobile-menu {
-             background-color: #F8F7F4; /* Earth: Light Parchment */
-             padding: 1rem;
-         }
+        p, li { font-size: 1.1rem; margin-bottom: 1.5rem; }
+        strong { font-weight: 700; color: var(--text-color); }
+        a { color: var(--accent-color); text-decoration: none; border-bottom: 1px solid var(--accent-color); transition: all 0.2s ease; }
+        a:hover { background-color: rgba(169, 92, 61, 0.1); border-bottom-color: transparent; }
+        
+        /* FIX FOR WORD WRAPPING LONG LINKS AND CODE */
+        .footnotes a, .metadata-item dd code {
+            overflow-wrap: break-word;
+            word-wrap: break-word; /* For older browser compatibility */
+        }
 
+        sup { line-height: 0; }
+        sup a { 
+            font-family: 'Inter', sans-serif; 
+            font-size: 0.8em; 
+            font-weight: 600; 
+            vertical-align: super;
+            text-decoration: none;
+            border-bottom: none;
+        }
+        sup a:hover {
+            border-bottom: 1px dotted var(--accent-color);
+            background-color: transparent;
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+        }
+        li {
+            padding-left: 0.5rem;
+        }
+
+        .footnotes { margin-top: 4rem; padding-top: 2rem; border-top: 2px solid var(--border-color); }
+        .footnotes ol { padding-left: 20px; font-size: 0.9rem; color: #555; }
+        .footnotes li { margin-bottom: 1rem; }
+        .footnotes li p { margin-bottom: 0; }
+        .footnote-back-link { font-family: 'Inter', sans-serif; margin-left: 0.5rem; text-decoration: none; border-bottom: none;}
+
+        .metadata-box, .series-box {
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .series-box { margin-top: 2rem; }
+
+        .metadata-box h2, .series-box h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-bottom: 2px solid var(--text-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+        
+        .metadata-item { margin-bottom: 1.5rem; }
+        .metadata-item dt { font-size: 0.8rem; font-weight: 600; color: var(--meta-text-color); margin-bottom: 0.25rem; }
+        .metadata-item dd { font-size: 0.95rem; margin-left: 0; font-weight: 400; }
+        
+        .series-item { margin-bottom: 1.5rem; }
+        .series-item:last-child { margin-bottom: 0; }
+        .series-item h3 {
+            font-family: 'Lora', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin: 0 0 0.25rem 0;
+            cursor: default;
+            line-height: 1.4;
+        }
+        .series-item a h3 {
+             cursor: pointer;
+        }
+        .series-item a:hover h3 {
+            color: var(--text-color);
+        }
+        .series-item a {
+            text-decoration: none;
+            border-bottom: none;
+        }
+        .series-item a:hover {
+            background-color: transparent;
+        }
+
+        .series-item p { margin: 0; } /* Remove bottom margin from paragraph inside series-item */
+        .series-meta {
+            font-size: 0.8rem !important;
+            font-weight: 600;
+            color: var(--meta-text-color);
+            text-transform: uppercase;
+        }
+
+        .series-item.current {
+            background-color: rgba(90, 125, 140, 0.05); /* a very light slate blue */
+            border-left: 3px solid var(--meta-text-color);
+            padding: 1rem;
+            margin-left: -1.5rem;
+            margin-right: -1.5rem;
+        }
+        .series-item.current h3 {
+            color: var(--text-color); /* Override accent color for current item */
+        }
+        .series-cta {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            margin-top: 2rem;
+            text-align: center;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+        }
+        .series-cta:hover {
+            background-color: var(--bg-color); /* Remove bg color change to keep it subtle */
+            border-color: var(--accent-color);
+        }
+
+        code {
+            font-family: 'Inter', sans-serif;
+            background-color: rgba(0,0,0,0.05);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        .logo-footer {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: center;
+        }
+
+        @media (max-width: 900px) {
+            .container { flex-direction: column-reverse; gap: 2rem; margin-top: 2rem; }
+            aside { position: static; top: auto; }
+        }
     </style>
 </head>
-<body class="bg-earth-parchment text-ink-black antialiased">
+<body>
 
-    <!-- Navigation -->
-    <header class="border-b border-ink-light py-4 px-4 sm:px-6 lg:px-8 sticky top-0 bg-earth-parchment bg-opacity-90 backdrop-blur-sm z-10">
-        <nav class="flex items-center justify-between max-w-7xl mx-auto">
-            <!-- Updated Wordmark -->
-             <a href="https://unearth.im" class="wordmark text-2xl md:text-3xl font-bold" aria-label="unearth.im homepage">
-                unearth<span class="text-burnt-sienna">.im</span>
-            </a>
-            <!-- Spoke Navigation (Desktop) -->
-            <div id="desktop-menu" class="hidden sm:flex items-center space-x-6 text-sm font-medium">
-                <a href="https://unearth.im/museum/" target="_blank" class="transition-colors duration-200">Visit the Museum</a>
-                <a href="https://unearth.im/contact/" class="transition-colors duration-200">Contact</a>
-            </div>
-            <!-- Mobile Menu Button -->
-            <div class="sm:hidden">
-                 <button id="mobile-menu-button" type="button" class="text-ink-light hover:text-ink-black focus:outline-none focus:text-ink-black" aria-label="Toggle menu" aria-expanded="false">
-                     <!-- Hamburger Icon -->
-                     <svg id="hamburger-icon" class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                     </svg>
-                     <!-- Close Icon (Initially Hidden) -->
-                      <svg id="close-icon" class="h-6 w-6 hidden" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                     </svg>
-                </button>
-            </div>
-        </nav>
-         <!-- Mobile Menu (Initially Hidden) -->
-        <div id="mobile-menu" class="sm:hidden hidden absolute top-full left-0 right-0 border-t border-ink-light shadow-md">
-             <div class="flex flex-col space-y-2 py-4 px-4">
-                 <a href="https://unearth.im/museum/" target="_blank" class="block transition-colors duration-200">Visit the Museum</a>
-                 <a href="https://unearth.im/contact/" class="block transition-colors duration-200">Contact</a>
-             </div>
-         </div>
-    </header>
+    <!-- Header / Notice -->
+    <div class="working-paper-notice">
+        <p><strong>A Foundational Thesis - Version 1.0</strong><br>
+        Published by <strong>The unearth.im Foundry</strong> | October 29, 2025</p>
+    </div>
 
-    <!-- Main Content -->
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+    <div class="container">
+        <main>
+            <article>
+                <header>
+                    <h1>Digital Provenance: The Art of Knowing the Self</h1>
+                    <p class="subtitle">The Successor to "Soulbound" and the Future of Verifiable Identity</p>
+                </header>
 
-        <!-- Article Container -->
-        <article class="font-serif text-lg">
-            <!-- Article Header -->
-            <header class="mb-12 border-b border-ink-light pb-8">
-                <p class="text-sm font-medium text-ink-accent uppercase tracking-wider mb-2">A Foundational Thesis</p>
-                <h1 class="font-bold text-4xl sm:text-5xl tracking-tight mb-4 text-ink-black">Digital Provenance: The Art of Knowing the Self</h1>
-                <p class="font-serif text-xl sm:text-2xl text-ink-light italic mb-6">A Foundational Thesis on the Successor to "Soulbound" and the Future of Verifiable Identity</p>
-                <div class="text-sm text-ink-light">
-                    <span>Published: October 29, 2025</span> | <span>By The unearth.im Foundry</span>
-                </div>
-            </header>
+                <p class="intro-summary">A foundational thesis on the central flaw in Web3's identity language—the "Soulbound Token"—and a proposal for its human-centric successor. To build a future of trust, we must replace a metaphor of technical binding with a language of humanistic curation. The future of identity is not "Soulbound"; it is "Digital Provenance."</p>
 
-            <!-- Article Body -->
-            <div class="article-body">
-                <h3>Introduction: The Crisis of the Ungrounded Self</h3>
+                <h2>Introduction: The Crisis of the Ungrounded Self</h2>
                 <p>A state of digital amnesia defines modern online life.</p>
                 <p>Professional, social, and creative existence is now largely built on shifting sands. Individuals exist as ephemeral collections of data, scattered across dozens of siloed platforms, each owned by a corporation that acts as a temporary landlord. The reputation built on one platform is non-transferable. The credentials earned are locked in proprietary databases. The connections forged are contingent on the platform's survival. When a service shutters, a part of that digital history vanishes with it.</p>
                 <p>We are, in essence, digitally homeless. We have addresses—dozens of them—but own no ground.</p>
-                <p>This problem, long a philosophical frustration, has now become an existential one. The rise of generative AI has created a crisis of authenticity that threatens the very foundation of digital trust.<sup class="text-ink-accent"><a href="#ref-1" aria-label="Reference 1">[1]</a></sup> The content seen, the people interacted with, the very reality presented is now perpetually in question. In a world where a deepfake can be generated in seconds, the simple, ancient question—"How do I know this is real?"—has become the central challenge of our time.</p>
-                <p>In response, the brilliant architects of the next web (Web3) have been forging a technological solution. They have been building the infrastructure for a decentralized, user-owned, and verifiable internet. Their tools are revolutionary: "Decentralized Identifiers" (DIDs), "Verifiable Credentials" (VCs), and, most notably, "Soulbound Tokens" (SBTs).<sup class="text-ink-accent"><a href="#ref-2" aria-label="Reference 2">[2]</a></sup></p>
+                <p>This problem, long a philosophical frustration, has now become an existential one. The rise of generative AI has created a crisis of authenticity that threatens the very foundation of digital trust.<sup id="ref-1"><a href="#fn-1">[1]</a></sup> The content seen, the people interacted with, the very reality presented is now perpetually in question. In a world where a deepfake can be generated in seconds, the simple, ancient question—"How do I know this is real?"—has become the central challenge of our time.</p>
+                <p>In response, the brilliant architects of the next web (Web3) have been forging a technological solution. They have been building the infrastructure for a decentralized, user-owned, and verifiable internet. Their tools are revolutionary: "Decentralized Identifiers" (DIDs), "Verifiable Credentials" (VCs), and, most notably, "Soulbound Tokens" (SBTs).<sup id="ref-2"><a href="#fn-2">[2]</a></sup></p>
                 <p>The technology is, without question, a marvel. It proposes a future where identity, achievements, and assets are not leased from a platform but are <em>owned</em> by the user, cryptographically secured on a blockchain.</p>
                 <p>But this solution, for all its technical genius, has a fatal flaw.</p>
                 <p>It has no soul.</p>
                 <p>The language used to describe this new world is cold, alienating, and built by engineers, for engineers. It is a language of "zero-knowledge proofs" and "non-transferable assets." It describes the <em>technical limitations</em> of the system, not the <em>human benefits</em> of its existence.</p>
                 <p>The most glaring example—and the most profound opportunity—is the term "Soulbound Token."</p>
-                <p>A concept of revolutionary importance—a permanent, non-transferable, verifiable record of accomplishments and identity—has been given a name drawn from high-fantasy video games (<em>World of Warcraft</em>).<sup class="text-ink-accent"><a href="#ref-2" aria-label="Reference 2">[2]</a></sup> It is a name that implies a <em>binding</em>, a <em>curse</em>, something done <em>to</em> a person. It is obscure, intimidating, and deeply un-human.</p>
-                <p>The technology is half the solution. The other half is the <em>language</em>. To make this future accessible, it must be given a name that resonates. The engineer's jargon must be traded for the humanist's metaphor.<sup class="text-ink-accent"><a href="#ref-3" aria-label="Reference 3">[3]</a></sup></p>
+                <p>A concept of revolutionary importance—a permanent, non-transferable, verifiable record of accomplishments and identity—has been given a name drawn from high-fantasy video games (<em>World of Warcraft</em>).<sup id="ref-2"><a href="#fn-2">[2]</a></sup> It is a name that implies a <em>binding</em>, a <em>curse</em>, something done <em>to</em> a person. It is obscure, intimidating, and deeply un-human.</p>
+                <p>The technology is half the solution. The other half is the <em>language</em>. To make this future accessible, it must be given a name that resonates. The engineer's jargon must be traded for the humanist's metaphor.<sup id="ref-3"><a href="#fn-3">[3]</a></sup></p>
                 <p>The conversation must shift from "Soulbound Tokens" to <strong>"Digital Provenance."</strong></p>
 
-                <h3>Part 1: The Dig — Unearthing the Meaning of "Provenance"</h3>
+                <h2>Part 1: The Dig — Unearthing "Provenance"</h2>
                 <p>Before this word can be applied, it must first be unearthed. This is the craft of the Digital Archaeologist: not to invent meaning, but to excavate it.</p>
                 <p>The word "provenance" is one of the most powerful terms in the curatorial world. To understand why it's the key to our digital future, one must first understand its journey through the physical world.</p>
-                <p>Etymologically, "provenance" comes from the French <em>provenir</em>, meaning "to come from."<sup class="text-ink-accent"><a href="#ref-4" aria-label="Reference 4">[4]</a></sup> At its core, it is a word of <strong>origin</strong> and <strong>journey</strong>. It is not a static label but a <em>narrative</em>—a documented history that answers the questions: Where has this been? Who has held it? What is its story?</p>
-                <p>Its power is evident in the world of high art. A newly discovered painting, claimed to be a Rembrandt, is worthless until its provenance is established. A team of researchers, historians, and forensic specialists will fastidiously trace its chain of custody backward in time. They will look for it in auction catalogs, in the dusty ledgers of old estates, in the letters of known collectors. This documented history, this <em>provenance</em>, is what separates a priceless masterpiece from a worthless forgery. It is the bedrock of authenticity. The story <em>is</em> the value.<sup class="text-ink-accent"><a href="#ref-4" aria-label="Reference 4">[4]</a></sup></p>
+                <p>Etymologically, "provenance" comes from the French <em>provenir</em>, meaning "to come from."<sup id="ref-4"><a href="#fn-4">[4]</a></sup> At its core, it is a word of <strong>origin</strong> and <strong>journey</strong>. It is not a static label but a <em>narrative</em>—a documented history that answers the questions: Where has this been? Who has held it? What is its story?</p>
+                <p>Its power is evident in the world of high art. A newly discovered painting, claimed to be a Rembrandt, is worthless until its provenance is established. A team of researchers, historians, and forensic specialists will fastidiously trace its chain of custody backward in time. They will look for it in auction catalogs, in the dusty ledgers of old estates, in the letters of known collectors. This documented history, this <em>provenance</em>, is what separates a priceless masterpiece from a worthless forgery. It is the bedrock of authenticity. The story <em>is</em> the value.<sup id="ref-4"><a href="#fn-4">[4]</a></sup></p>
                 <p>This same power is seen in the analog world of collecting. Why is a "first pressing" of a Miles Davis record more valuable than a modern reissue? The music is identical. The value is in its <em>provenance</em>. It is an artifact from the original moment of creation. It was there.</p>
                 <p>A vintage fountain pen is cherished not just for how it writes, but for the history it holds. It is an object with a past, a tangible link to a different era, a tool that has recorded stories before it came to record new ones.</p>
                 <p>In all these cases, provenance transforms an <em>object</em> into an <em>artifact</em>. It imbues it with a narrative, with authenticity, and with a gravity that transcends its mere physical components. It is the verifiable record of its existence through time.</p>
@@ -265,17 +314,17 @@
                 <p>Modern digital life treats its most valuable asset—identity, skills, and life's work—with less care, rigor, and respect than a speculative JPEG.</p>
                 <p>This is the error that must be corrected. This is the strategic and moral opportunity. This powerful, human-centric concept of "provenance" must be applied to its most important subject: <strong>the human being.</strong></p>
 
-                <h3>Part 2: The Flaw — A Term in Search of a Soul</h3>
+                <h2>Part 2: The Flaw — A Term in Search of a Soul</h2>
                 <p>The future cannot be built on a flawed metaphor. The term "Soulbound" is a brilliant technical concept wrapped in a terrible name, and that name is a barrier to adoption.</p>
-                <p>The idea, as first proposed by Ethereum creator Vitalik Buterin and his co-authors, E. Glen Weyl and Puja Ohlhaver, is simple and revolutionary. A "Soulbound Token" (SBT) is a digital token that, once received in a digital "wallet," cannot be sold, given away, or transferred.<sup class="text-ink-accent"><a href="#ref-2" aria-label="Reference 2">[2]</a></sup></p>
+                <p>The idea, as first proposed by Ethereum creator Vitalik Buterin and his co-authors, E. Glen Weyl and Puja Ohlhaver, is simple and revolutionary. A "Soulbound Token" (SBT) is a digital token that, once received in a digital "wallet," cannot be sold, given away, or transferred.<sup id="ref-2"><a href="#fn-2">[2]</a></sup></p>
                 <p>It is "bound" to its owner.</p>
                 <p>The use cases are profound. A university degree, issued as an SBT, cannot be sold or faked. A professional certification from a respected body would be non-transferable. A driver's license, a passport, a verified employment history—all could be issued as SBTs, creating a verifiable, immutable record of accomplishments and qualifications.</p>
                 <p>It is the infrastructure for a world of real, verifiable trust.</p>
                 <p>But the name.</p>
-                <p>Metaphors are not neutral. They are cultural vessels. They carry baggage.<sup class="text-ink-accent"><a href="#ref-3" aria-label="Reference 3">[3]</a></sup> "Soulbound" is rooted in the high-fantasy vernacular of <em>World of Warcraft</em>, where it describes a magical item that becomes permanently bound to a player's "soul," rendering it non-transferable—a fact the authors of the original paper explicitly cite.<sup class="text-ink-accent"><a href="#ref-2" aria-label="Reference 2">[2]</a></sup></p>
+                <p>Metaphors are not neutral. They are cultural vessels. They carry baggage.<sup id="ref-3"><a href="#fn-3">[3]</a></sup> "Soulbound" is rooted in the high-fantasy vernacular of <em>World of Warcraft</em>, where it describes a magical item that becomes permanently bound to a player's "soul," rendering it non-transferable—a fact the authors of the original paper explicitly cite.<sup id="ref-2"><a href="#fn-2">[2]</a></sup></p>
                 <p>To the engineer, this is a clever 1:1 metaphor for a technical property (non-transferability).</p>
                 <p>To the human, this metaphor is alienating, if not hostile.</p>
-                <ol class="list-decimal list-outside ml-6 mb-6 space-y-2">
+                <ol>
                     <li><strong>It's Ominous and Inaccessible:</strong> For the 99% of humanity that has not played <em>World of Warcraft</em>, the term is mystical, confusing, and vaguely occult. It sounds like a digital curse, a cryptographic ball-and-chain.</li>
                     <li><strong>It's Passive and Disempowering:</strong> "Soulbound" is an action done <em>to</em> a person. The item <em>binds</em> to the soul. It implies a loss of agency, a permanent and possibly undesirable attachment. This is the <em>exact opposite</em> of the "Self-Sovereign" ideal this technology is meant to champion.</li>
                     <li><strong>It's Technically Myopic:</strong> It describes the <em>limitation</em> (it can't be moved) rather than the <em>benefit</em> (it proves who you are). It's a name that focuses on the "how" of the code, not the "why" of the human experience.</li>
@@ -283,132 +332,130 @@
                 <p>"Soulbound" is a perfect example of an "address," not a "landmark." It is a functional, technical string of characters that points to an idea. It has no poetry, no gravity, and no "soul" of its own.</p>
                 <p>It is possible—and necessary—to do better.</p>
 
-                <h3>Part 3: The Thesis — Digital Provenance for the Self</h3>
+                <h2>Part 3: The Thesis — Digital Provenance for the Self</h2>
                 <p>This is the corrective thesis.</p>
                 <p>The concept of a non-transferable digital record of a life's accomplishments should not be called a "Soulbound Token."</p>
                 <p>It should be called <strong>Digital Provenance</strong>.</p>
                 <p>This simple shift in language—from the language of engineering to the language of curation—is not superficial. It is not "marketing." It is a fundamental reframing that moves the entire concept from a place of technical obscurity to one of human-centric clarity and empowerment.</p>
                 <p>The strategic power of this new metaphor is worth analyzing:</p>
-                <ol class="list-decimal list-outside ml-6 mb-6 space-y-2">
+                <ol>
                     <li><strong>It Is Empowering and Active, Not Passive.</strong><br>"Soulbound" is a chain. "Provenance" is a collection. "Provenance" is something one <em>builds</em>. It is something one <em>curates</em>. It is something one <em>presents</em>. It restores a sense of agency and dignity to the user. The individual is not a "holder of a bound token"; they are the <em>curator of their own verifiable history</em>. They actively gather the proof of their degree, their skills, and their experiences to build a rich, verifiable narrative of their life.</li>
                     <li><strong>It Is Elegant and Familiar, Not Jargonistic.</strong><br>"Provenance" is a respected term from the real world. It carries connotations of value, history, and authenticity. It is a word that can be used in a boardroom, a university, or a coffee shop without sounding like it emerged from a fantasy novel. It lowers the barrier to adoption by grounding a futuristic idea in a familiar, trusted concept.</li>
                     <li><strong>It Is a "Landmark," Not an "Address."</strong><br>"Soulbound Token" is a forgettable, functional "address." "Digital Provenance" is a "landmark." It is a concept with gravity. It's a poetic, memorable, and beautiful phrase that <em>pulls people in</em>. It creates intrigue. It invites the question, "What is that?" And the answer is intuitive: "It's the verifiable story of you."</li>
                     <li><strong>It Is a Living Document, Not a Static Token.</strong><br>The "token" in SBT is reductive. It implies a single <em>thing</em>. But identity is not a single thing. It is a vast, unfolding, and multi-faceted story. "Digital Provenance" beautifully accommodates this. A person's provenance is not <em>one</em> token. It is the <em>entire collection</em> of their verifiable credentials. It is the sum of all verified parts:
-                        <ul class="list-disc list-outside ml-6 my-4 space-y-2">
+                        <ul>
                             <li>The credential from a university.</li>
                             <li>The credential from a past employer.</li>
                             <li>The credential for a marathon completed.</li>
                             <li>The credential for a CPR certification earned.</li>
                             <li>The credential for open-source code contributed.</li>
                         </ul>
-                        Together, these pieces form the "provenance of the self"—a rich, verifiable, and living document that the individual, and only the individual, controls.
+                        <p>Together, these pieces form the "provenance of the self"—a rich, verifiable, and living document that the individual, and only the individual, controls.</p>
                     </li>
                 </ol>
                 <p>This is the term that unlocks the human potential of the technology. It's not just a better name. It's the <em>right</em> name.</p>
 
-                <h3>Part 4: The Vision — A World Built on Digital Provenance</h3>
+                <h2>Part 4: The Vision — A World Built on Provenance</h2>
                 <p>What does this reframing unlock? What does a world grounded in "Digital Provenance" actually look like?</p>
                 <p>This is where the theoretical becomes practical, moving into the realm of human experience architecture.</p>
 
-                <h4>The End of the Falsifiable Résumé</h4>
+                <h3>The End of the Falsifiable Résumé</h3>
                 <p>Imagine applying for a job. No longer is a PDF résumé submitted—a document that is laughably easy to fake, a mere list of unverified claims. Instead, the applicant <em>presents</em> a curated, temporary, and cryptographically secure view of their Digital Provenance. They grant the employer access to <em>only</em> the credentials relevant to that job. The employer doesn't have to "check references" or "verify a degree." They can see, instantly and immutably, the Verifiable Credential issued by the university and the Verifiable Credential of employment issued by the previous company. Trust is established in seconds, not weeks. The playing field is leveled, and a true meritocracy can emerge, based on <em>what an individual has verifiably done</em>, not on how well they can write a résumé.</p>
 
-                <h4>Privacy and Control: The "Veiled Proof"</h4>
+                <h3>Privacy and Control: The "Veiled Proof"</h3>
                 <p>This future is not about radical, forced transparency. It is the opposite. It is about <strong>selective disclosure</strong>. This is the architecture of trust. This is the foundation of true <strong>Digital Sovereignty.</strong> In the current web, to prove one is over 21, one must show an entire driver's license—revealing a date of birth, a home address, and other private data. A user is forced to over-share.</p>
-                <p>In a world of Digital Provenance, one would use a "Veiled Proof" (a more human-centric term for a "Zero-Knowledge Proof").<sup class="text-ink-accent"><a href="#ref-5" aria-label="Reference 5">[5]</a></sup> Digital Provenance puts the user in <em>absolute control</em>. They prove what needs to be proven, and nothing more. One can prove they have a medical degree without revealing their grades. One can prove they are a resident of a city without revealing their street address.</p>
+                <p>In a world of Digital Provenance, one would use a "Veiled Proof" (a more human-centric term for a "Zero-Knowledge Proof").<sup id="ref-5"><a href="#fn-5">[5]</a></sup> Digital Provenance puts the user in <em>absolute control</em>. They prove what needs to be proven, and nothing more. One can prove they have a medical degree without revealing their grades. One can prove they are a resident of a city without revealing their street address.</p>
 
-                <h4>A Cure for Digital Amnesia</h4>
+                <h3>A Cure for Digital Amnesia</h3>
                 <p>A professional reputation, a creative portfolio, a community standing—these are no longer held hostage by a platform. They become part of <em>personal</em> provenance. When an individual leaves a company, they take the verifiable record of their employment and contributions with them. When a social platform fails, a curated history, a "Digital Monument," is safe, because it <em>belongs to the user</em>. One is finally building on one's own "digital ground."</p>
 
-                <h4>The Bedrock of Real Trust</h4>
-                <p>This is the infrastructure that finally solves the AI crisis of authenticity. In a world awash with synthetic media and deepfakes, the "blue check" of a centralized corporation is meaningless. It is a bought commodity, not an earned proof.<sup class="text-ink-accent"><a href="#ref-1" aria-label="Reference 1">[1]</a></sup> The future of trust will be Digital Provenance. Articles, artwork, public statements will be cryptographically "signed" by their creator, tied to their verifiable identity. The broken model of "trusting the platform" will be replaced by a resilient one of "verifying the source." The source is the individual.</p>
+                <h3>The Bedrock of Real Trust</h3>
+                <p>This is the infrastructure that finally solves the AI crisis of authenticity. In a world awash with synthetic media and deepfakes, the "blue check" of a centralized corporation is meaningless. It is a bought commodity, not an earned proof.<sup id="ref-1"><a href="#fn-1">[1]</a></sup> The future of trust will be Digital Provenance. Articles, artwork, public statements will be cryptographically "signed" by their creator, tied to their verifiable identity. The broken model of "trusting the platform" will be replaced by a resilient one of "verifying the source." The source is the individual.</p>
 
-                <h3>Conclusion: The Archaeologist's Vow</h3>
-                <p>The next era of the internet is a battle for language. The words chosen today will become the blueprints for the world inhabited tomorrow. A human-centric, decentralized, and equitable future cannot be built on a foundation of cold, alienating, and disempowering jargon.<sup class="text-ink-accent"><a href="#ref-3" aria-label="Reference 3">[3]</a></sup></p>
+                <h2>Conclusion: The Archaeologist's Vow</h2>
+                <p>The next era of the internet is a battle for language. The words chosen today will become the blueprints for the world inhabited tomorrow. A human-centric, decentralized, and equitable future cannot be built on a foundation of cold, alienating, and disempowering jargon.<sup id="ref-3"><a href="#fn-3">[3]</a></sup></p>
                 <p>"Soulbound Token" is a brilliant technical blueprint, but it's an unlivable house. It's an "address" that no one wants to live at.</p>
                 <p>"Digital Provenance" is the "landmark."</p>
                 <p>It is a term that has poetry, history, and, most importantly, <em>dignity</em>. It reframes digital identity as an act of curating the most valuable asset an individual will ever own: their self.</p>
                 <p>This is the work of the Digital Archaeologist. The mission is not simply to find and sell domain names. It is to unearth the language that builds landmarks. To find the words that have a soul.</p>
                 <p>"Digital Provenance" is such a word. It is the name for a better future. It is the narrative to champion, build upon, and lead.</p>
 
-                <!-- Citations -->
-                <div class="mt-16 pt-8 border-t border-ink-light text-sm text-ink-light article-references">
-                    <h4 class="font-semibold text-base text-ink-black mb-4">References</h4>
+                <section class="footnotes">
+                    <h2>References</h2>
                     <ol>
-                        <li id="ref-1">Wierda, M. (2023). "The AI-Fueled 'Crisis of Authenticity' Is Here." <em>Gartner Research</em>. Retrieved from Gartner, Inc. (This represents the common industry analysis of AI's impact on digital trust).</li>
-                        <li id="ref-2">Weyl, E. Glen, Ohlhaver, P., & Buterin, V. (2022). "Decentralized Society: Finding Web3's Soul." <em>Available at SSRN: https://ssrn.com/abstract=4105763</em>. (This is the primary paper introducing SBTs and explicitly noting the <em>World of Warcraft</em> origin of the term).</li>
-                        <li id="ref-3">Lakoff, G., & Johnson, M. (1980). <em>Metaphors We Live By</em>. University of Chicago Press. (The foundational text on how metaphors are not just poetic flair but cognitive structures that shape reality and actions).</li>
-                        <li id="ref-4">The Getty Research Institute. (n.d.). "Provenance." <em>Art & Architecture Thesaurus (AAT)</em>. Retrieved from The J. Paul Getty Trust. (Defines provenance as: "The history of ownership of a work of art from the time of its creation to the present day...").</li>
-                        <li id="ref-5">Ethereum Foundation. (n.d.). "Zero-Knowledge Proofs." <em>ethereum.org</em>. (Provides a developer-level and conceptual overview of the technology, defining it as a method to "prove a statement is true, without revealing any information other than the statement itself.").</li>
+                        <li id="fn-1"><p>Wierda, M. (2023). "The AI-Fueled 'Crisis of Authenticity' Is Here." <em>Gartner Research</em>. Retrieved from Gartner, Inc. (This represents the common industry analysis of AI's impact on digital trust). <a href="#ref-1" class="footnote-back-link" title="Jump back to footnote 1 in the text">↩</a></p></li>
+                        <li id="fn-2"><p>Weyl, E. Glen, Ohlhaver, P., & Buterin, V. (2022). "Decentralized Society: Finding Web3's Soul." <em>Available at SSRN: https://ssrn.com/abstract=4105763</em>. (This is the primary paper introducing SBTs and explicitly noting the <em>World of Warcraft</em> origin of the term). <a href="#ref-2" class="footnote-back-link" title="Jump back to footnote 2 in the text">↩</a></p></li>
+                        <li id="fn-3"><p>Lakoff, G., & Johnson, M. (1980). <em>Metaphors We Live By</em>. University of Chicago Press. (The foundational text on how metaphors are not just poetic flair but cognitive structures that shape reality and actions). <a href="#ref-3" class="footnote-back-link" title="Jump back to footnote 3 in the text">↩</a></p></li>
+                        <li id="fn-4"><p>The Getty Research Institute. (n.d.). "Provenance." <em>Art & Architecture Thesaurus (AAT)</em>. Retrieved from The J. Paul Getty Trust. (Defines provenance as: "The history of ownership of a work of art from the time of its creation to the present day..."). <a href="#ref-4" class="footnote-back-link" title="Jump back to footnote 4 in the text">↩</a></p></li>
+                        <li id="fn-5"><p>Ethereum Foundation. (n.d.). "Zero-Knowledge Proofs." <em>ethereum.org</em>. (Provides a developer-level and conceptual overview of the technology, defining it as a method to "prove a statement is true, without revealing any information other than the statement itself."). <a href="#ref-5" class="footnote-back-link" title="Jump back to footnote 5 in the text">↩</a></p></li>
                     </ol>
+                </section>
+            </article>
+        </main>
+        <aside>
+            <div class="metadata-box">
+                <h2>Thesis Details</h2>
+                <div class="metadata-item">
+                    <dt>Category</dt>
+                    <dd>Cornerstone Thesis</dd>
                 </div>
-            </div> <!-- End Article Body -->
+                <div class="metadata-item">
+                    <dt>Core Concepts</dt>
+                    <dd><code>Digital Provenance</code><br><code>Verifiable Self</code><br><code>Digital Sovereignty</code></dd>
+                </div>
+                <div class="metadata-item">
+                    <dt>Domain Artifact</dt>
+                    <dd><code>soulbound.im</code></dd>
+                </div>
+                <div class="metadata-item">
+                    <dt>Date Published</dt>
+                    <dd>October 29, 2025</dd>
+                </div>
+                <div class="logo-footer">
+                    <a href="https://unearth.im/" target="_blank" rel="noopener noreferrer" style="border-bottom: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 60" width="120">
+                            <text x="50%" y="50%" font-family="'Inter', sans-serif" font-size="50" font-weight="600" text-anchor="middle" dominant-baseline="middle">
+                                <tspan fill="#2E2E2E">unearth</tspan><tspan fill="#A95C3D">.im</tspan>
+                            </text>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="series-box">
+                <h2>Provenance & Identity Series</h2>
+                                    
+                <div class="series-item current">
+                    <h3>1. Digital Provenance: The Art of Knowing the Self</h3>
+                    <p class="series-meta">You are here</p>
+                </div>
 
-        </article> <!-- End Article Container -->
+                <div class="series-item">
+                    <a href="https://unearth.im/fieldnotes/post/authenticateim-the-gravity-of-certainty" target="_blank" rel="noopener noreferrer">
+                        <h3>2. The Gravity of Certainty</h3>
+                        <p class="series-meta">Field Note on authenticate.im</p>
+                    </a>
+                </div>
 
-    </main>
-
-    <!-- Footer -->
-    <footer class="border-t border-ink-light mt-16 sm:mt-24 py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-ink-light">
-            <!-- Placeholder for fingerprint logo -->
-            <!-- <img src="./images/fingerprint.png" alt="unearth.im fingerprint logo" class="mx-auto mb-4 h-8 w-auto" onerror="this.onerror=null;this.style.display='none'"> -->
-            <p>&copy; <span id="current-year"></span> unearth.im. All rights reserved.</p>
-            <p class="mt-1">Story, grounded.</p>
-        </div>
-    </footer>
-
-    <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // --- Mobile Menu Toggle ---
-        const menuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const hamburgerIcon = document.getElementById('hamburger-icon');
-        const closeIcon = document.getElementById('close-icon');
-
-        menuButton.addEventListener('click', () => {
-            const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-            menuButton.setAttribute('aria-expanded', !isExpanded);
-            mobileMenu.classList.toggle('hidden');
-            hamburgerIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
-        });
-
-        // Close mobile menu when a link is clicked
-        mobileMenu.addEventListener('click', (event) => {
-             if (event.target.tagName === 'A') {
-                 menuButton.setAttribute('aria-expanded', 'false');
-                 mobileMenu.classList.add('hidden');
-                 hamburgerIcon.classList.remove('hidden');
-                 closeIcon.classList.add('hidden');
-             }
-         });
-
-        // Simple smooth scroll for navigation links, adjusted for sticky header
-        document.querySelectorAll('a[href^="#ref-"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const headerOffset = document.querySelector('header').offsetHeight || 70; // Estimate header height
-                const targetElement = document.getElementById(targetId.substring(1));
+                <div class="series-item">
+                     <a href="httpsm://verifiable.im" target="_blank" rel="noopener noreferrer">
+                        <h3>3. The Verifiable Self</h3>
+                        <p class="series-meta">Forthcoming: December 2025</p>
+                    </a>
+                </div>
                 
-                if (targetElement) {
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20; // 20px buffer
+                <div class="series-item">
+                     <a href="https://sovereignty.im" target="_blank" rel="noopener noreferrer">
+                        <h3>4. The Seven Principles of Digital Sovereignty</h3>
+                        <p class="series-meta">Foundry Constitution</p>
+                    </a>
+                </div>
 
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: "smooth"
-                    });
-                     // Close mobile menu if open
-                     if (!mobileMenu.classList.contains('hidden')) {
-                         menuButton.click();
-                     }
-                }
-            });
-        });
-    </script>
+                <a href="https://unearth.im/museum/" target="_blank" rel="noopener noreferrer" class="series-cta">Explore the Full Museum &rarr;</a>
+            </div>
+
+        </aside>
+    </div>
 </body>
 </html>
 
