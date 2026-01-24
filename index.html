@@ -1,546 +1,961 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            
-      <!-- 1. Core Page Information -->
-    <title>Digital Provenance: A Thesis | soulbound.im</title>
-    <meta name="description" content="A foundational thesis on why &quot;Digital Provenance&quot; is the human-centric successor to the flawed &quot;Soulbound Token&quot; (SBT) metaphor.">
-    <meta name="keywords" content="Digital Provenance, Soulbound Token, SBT, Web3 Identity, Verifiable Credentials, Digital Identity, unearth.im, soulbound.im, Digital Sovereignty">
-    <meta name="author" content="unearth.im">
+    <title>Digital Provenance | Interactive Artwork</title>
+    <meta name="description"
+        content="An interactive digital artwork exploring the concept of Digital Provenance as the successor to Soulbound Tokens.">
 
-    <!-- 2. Open Graph (for Facebook, LinkedIn, etc.) -->
-    <meta property="og:type" content="article">
+    <!-- SEO Meta Tags -->
+    <meta property="og:type" content="website">
     <meta property="og:url" content="https://soulbound.im">
-    <meta property="og:title" content="Digital Provenance: A Thesis | soulbound.im">
-    <meta property="og:description" content="A foundational thesis on why &quot;Digital Provenance&quot; is the human-centric successor to the flawed &quot;Soulbound Token&quot; (SBT) metaphor.">
-    <meta property="og:image" content="og-preview.png"> <!-- Links to root OG image -->
+    <meta property="og:title" content="Digital Provenance | Interactive Artwork">
+    <meta property="og:description"
+        content="An interactive digital artwork exploring the concept of Digital Provenance.">
+    <meta property="og:image" content="og-preview.png">
 
-    <!-- 3. Twitter Card -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://soulbound.im">
-    <meta property="twitter:title" content="Digital Provenance: A Thesis | soulbound.im">
-    <meta property="twitter:description" content="A foundational thesis on why &quot;Digital Provenance&quot; is the human-centric successor to the flawed &quot;Soulbound Token&quot; (SBT) metaphor.">
-    <meta property="twitter:image" content="og-preview.png"> <!-- Links to root Twitter image -->
-
-    <!-- 4. Indexing Control -->
-    <meta name="robots" content="index, follow">
-
-    <!-- Canonical Link -->
     <link rel="canonical" href="https://soulbound.im">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.svg" type="image/svg+xml"> <!-- Links to root favicon -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@400;700;900&display=swap"
+        rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-
-        /* Adhering to Brand Guide 3.0: Earth & Ink Palette */
-        :root {
-            --bg-color: #F8F7F4;      /* Earth: Light Parchment */
-            --text-color: #2E2E2E;    /* Ink: Charcoal */
-            --accent-color: #A95C3D;  /* Accent: Burnt Sienna */
-            --meta-text-color: #5A7D8C; /* Accent: Slate Blue */
-            --border-color: #D1D1D1;  /* Ink: Light Gray */
-        }
-
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Lora', serif; /* The Manuscript font */
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.8;
+        * {
             margin: 0;
             padding: 0;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            box-sizing: border-box;
         }
 
-        .working-paper-notice {
-            background-color: #fffaf0; /* A light cream background */
-            border: 1px solid var(--border-color);
-            border-left: 4px solid var(--accent-color);
-            padding: 1.5rem 2rem;
-            margin: 0 auto; /* Centered, no top margin */
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: var(--text-color);
-            max-width: 1100px;
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+            --accent-sienna: #A95C3D;
+            --accent-slate: #5A7D8C;
+            --text-light: #F8F7F4;
+            --text-dim: #8a8a8a;
+            --glass-bg: rgba(248, 247, 244, 0.03);
+            --glass-border: rgba(248, 247, 244, 0.1);
         }
-        .working-paper-notice p { margin: 0; padding: 0.5rem 0; }
-        .working-paper-notice strong { font-weight: 600; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Scroll Progress Indicator */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-sienna), var(--accent-slate));
+            z-index: 1000;
+            transition: width 0.1s ease;
+        }
+
+        /* Section Base Styles */
+        section {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            overflow: hidden;
+        }
 
         .container {
-            max-width: 1100px;
-            margin: 2rem auto 4rem auto;
-            padding: 0 2rem;
-            display: flex;
-            gap: 4rem;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
-        main { flex: 3; }
-        aside { flex: 1; position: sticky; top: 4rem; height: fit-content; }
-        article { max-width: 720px; }
+        /* Canvas Background */
+        .canvas-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            line-height: 1.1;
+        }
 
         h1 {
-            font-family: 'Lora', serif;
-            font-size: 2.8rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 0.5rem;
+            font-size: clamp(3rem, 8vw, 8rem);
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--text-light), var(--accent-slate));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        
-        article h2 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-top: 3rem;
+
+        h2 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
             margin-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
         }
-        article h3 { 
-            font-family: 'Inter', sans-serif;
-            font-size: 1.2rem; 
-            font-weight: 700;
-            color: var(--meta-text-color); /* Slate blue for subheads */
-            border-bottom: none; 
-            margin-top: 2.5rem; 
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
             margin-bottom: 1rem;
         }
 
+        p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            line-height: 1.8;
+            color: var(--text-dim);
+            max-width: 800px;
+        }
+
+        /* Glass Card */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(248, 247, 244, 0.05);
+            border-color: rgba(248, 247, 244, 0.2);
+            transform: translateY(-5px);
+        }
+
+        /* Hero Section */
+        #hero {
+            background: radial-gradient(circle at 50% 50%, rgba(169, 92, 61, 0.1) 0%, var(--bg-dark) 70%);
+        }
+
+        .hero-content {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            color: var(--meta-text-color);
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: var(--accent-slate);
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             margin-bottom: 3rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .intro-summary {
-            font-size: 1.2rem;
-            font-style: italic;
-            color: var(--meta-text-color); /* Using Slate Blue for emphasis */
-            border-left: 3px solid var(--accent-color);
-            padding-left: 1.5rem;
-            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease 0.3s forwards;
         }
 
-        p, li { font-size: 1.1rem; margin-bottom: 1.5rem; }
-        strong { font-weight: 700; color: var(--text-color); }
-        em { font-style: italic; }
-        a { color: var(--accent-color); text-decoration: none; border-bottom: 1px solid var(--accent-color); transition: all 0.2s ease; }
-        a:hover { background-color: rgba(169, 92, 61, 0.1); border-bottom-color: transparent; }
-        
-        /* FIX FOR WORD WRAPPING LONG LINKS AND CODE */
-        .footnotes a, .metadata-item dd code, .footnotes li p {
-            overflow-wrap: break-word;
-            word-wrap: break-word; /* For older browser compatibility */
-            -ms-word-break: break-all;
-            word-break: break-all;
-            word-break: break-word; /* Most modern browsers */
-        }
-
-
-        sup { line-height: 0; }
-        sup a { 
-            font-family: 'Inter', sans-serif; 
-            font-size: 0.8em; 
-            font-weight: 600; 
-            vertical-align: super;
-            text-decoration: none;
-            border-bottom: none;
-        }
-        sup a:hover {
-            border-bottom: 1px dotted var(--accent-color);
-            background-color: transparent;
-        }
-
-        ul, ol {
-            padding-left: 1.5rem;
-        }
-        li {
-            padding-left: 0.5rem;
-        }
-
-        /* NEW: Style for embedded diagram */
-        .article-diagram {
-            margin: 3rem 0;
-            border: 1px solid var(--border-color);
-            background-color: #ffffff;
-            padding: 1.5rem;
-            border-radius: 4px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-        }
-        .article-diagram figcaption {
-            font-family: 'Inter', sans-serif;
+        .scroll-hint {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
             font-size: 0.9rem;
-            color: var(--meta-text-color);
-            text-align: center;
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-color);
-        }
-        .article-diagram svg {
-            width: 100%;
-            height: auto;
+            color: var(--text-dim);
+            opacity: 0;
+            animation: fadeInUp 1.5s ease 0.6s forwards, bounce 2s ease-in-out 2s infinite;
         }
 
-        
-        .footnotes { margin-top: 4rem; padding-top: 2rem; border-top: 2px solid var(--border-color); }
-        .footnotes ol { padding-left: 20px; font-size: 0.9rem; color: #555; }
-        .footnotes li { margin-bottom: 1rem; }
-        .footnotes li p { margin-bottom: 0; font-size: 0.9rem; line-height: 1.6; }
-        .footnote-back-link { font-family: 'Inter', sans-serif; margin-left: 0.5rem; text-decoration: none; border-bottom: none;}
+        @keyframes bounce {
 
-        .metadata-box, .series-box {
-            border: 1px solid var(--border-color);
-            padding: 1.5rem;
-            font-family: 'Inter', sans-serif;
-        }
-        .series-box { margin-top: 2rem; }
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
 
-        .metadata-box h2, .series-box h2 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text-color);
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            border-bottom: 2px solid var(--text-color);
-            padding-bottom: 0.5rem;
-            margin-top: 0;
-            margin-bottom: 1.5rem;
-        }
-        
-        .metadata-item { margin-bottom: 1.5rem; }
-        .metadata-item dt { font-size: 0.8rem; font-weight: 600; color: var(--meta-text-color); margin-bottom: 0.25rem; }
-        .metadata-item dd { font-size: 0.95rem; margin-left: 0; font-weight: 400; }
-        
-        .series-item { margin-bottom: 1.5rem; }
-        .series-item:last-child { margin-bottom: 0; }
-        .series-item h3 {
-            font-family: 'Lora', serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            margin: 0 0 0.25rem 0;
-            cursor: default;
-            line-height: 1.4;
-        }
-        .series-item a h3 {
-             cursor: pointer;
-        }
-        .series-item a:hover h3 {
-            color: var(--text-color);
-        }
-        .series-item a {
-            text-decoration: none;
-            border-bottom: none;
-        }
-        .series-item a:hover {
-            background-color: transparent;
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
         }
 
-        .series-item p { margin: 0; font-size: 1rem; line-height: 1.6;} /* Remove bottom margin from paragraph inside series-item */
-        .series-meta {
-            font-size: 0.8rem !important;
-            font-weight: 600;
-            color: var(--meta-text-color);
-            text-transform: uppercase;
-        }
-
-        .series-item.current {
-            background-color: rgba(90, 125, 140, 0.05); /* a very light slate blue */
-            border-left: 3px solid var(--meta-text-color);
-            padding: 1rem;
-            margin-left: -1.5rem;
-            margin-right: -1.5rem;
-        }
-        .series-item.current h3 {
-            color: var(--text-color); /* Override accent color for current item */
-        }
-        .series-cta {
+        .scroll-hint::after {
+            content: '↓';
             display: block;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            margin-top: 2rem;
-            text-align: center;
-            padding: 0.75rem;
-            border: 1px solid var(--border-color);
-        }
-        .series-cta:hover {
-            background-color: var(--bg-color); /* Remove bg color change to keep it subtle */
-            border-color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
         }
 
-        code {
-            font-family: 'Inter', sans-serif;
-            background-color: rgba(0,0,0,0.05);
-            padding: 0.2em 0.4em;
-            border-radius: 3px;
-            font-size: 0.9em;
+        /* Problem Section - Chaotic */
+        #problem {
+            background: var(--bg-darker);
         }
 
-        .logo-footer {
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-color);
+        .problem-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .chaotic-visual {
+            position: relative;
+            height: 500px;
+            border: 2px solid rgba(169, 92, 61, 0.3);
+            border-radius: 20px;
+            overflow: hidden;
+            background: rgba(169, 92, 61, 0.05);
+        }
+
+        .binding-chain {
+            position: absolute;
+            width: 100%;
+            height: 100%;
             display: flex;
+            align-items: center;
             justify-content: center;
         }
 
-        @media (max-width: 900px) {
-            .container { flex-direction: column-reverse; gap: 2rem; margin-top: 2rem; }
-            aside { position: static; top: auto; }
+        .chain-link {
+            width: 60px;
+            height: 60px;
+            border: 3px solid var(--accent-sienna);
+            border-radius: 50%;
+            position: absolute;
+            animation: shake 3s ease-in-out infinite;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(-10px, 5px) rotate(-5deg);
+            }
+
+            50% {
+                transform: translate(5px, -10px) rotate(5deg);
+            }
+
+            75% {
+                transform: translate(-5px, 10px) rotate(-3deg);
+            }
+        }
+
+        .keyword-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .keyword-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(169, 92, 61, 0.2);
+            color: var(--accent-sienna);
+            font-weight: 600;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .keyword-list li.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Solution Section - Elegant */
+        #solution {
+            background: radial-gradient(circle at 30% 50%, rgba(90, 125, 140, 0.1) 0%, var(--bg-dark) 70%);
+        }
+
+        .solution-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .elegant-visual {
+            position: relative;
+            height: 500px;
+            border: 2px solid rgba(90, 125, 140, 0.3);
+            border-radius: 20px;
+            overflow: hidden;
+            background: rgba(90, 125, 140, 0.05);
+        }
+
+        .provenance-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .provenance-item {
+            background: rgba(90, 125, 140, 0.2);
+            border: 1px solid var(--accent-slate);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 1rem;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .provenance-item.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .provenance-item:hover {
+            background: rgba(90, 125, 140, 0.4);
+            transform: scale(1.05);
+        }
+
+        /* Comparison Section */
+        #comparison {
+            background: var(--bg-darker);
+            min-height: 100vh;
+        }
+
+        .comparison-container {
+            position: relative;
+            height: 600px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+
+        .comparison-side {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        .comparison-left {
+            left: 0;
+            width: 50%;
+            background: linear-gradient(135deg, rgba(169, 92, 61, 0.2), rgba(169, 92, 61, 0.05));
+            border-right: 2px solid var(--accent-sienna);
+        }
+
+        .comparison-right {
+            right: 0;
+            width: 50%;
+            background: linear-gradient(135deg, rgba(90, 125, 140, 0.05), rgba(90, 125, 140, 0.2));
+            border-left: 2px solid var(--accent-slate);
+        }
+
+        .comparison-slider {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: var(--text-light);
+            cursor: ew-resize;
+            z-index: 10;
+            transform: translateX(-50%);
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: var(--text-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .slider-handle::before,
+        .slider-handle::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-top: 2px solid var(--bg-dark);
+            border-right: 2px solid var(--bg-dark);
+        }
+
+        .slider-handle::before {
+            left: 10px;
+            transform: rotate(-135deg);
+        }
+
+        .slider-handle::after {
+            right: 10px;
+            transform: rotate(45deg);
+        }
+
+        /* Vision Section - Network */
+        #vision {
+            background: radial-gradient(circle at 70% 50%, rgba(90, 125, 140, 0.15) 0%, var(--bg-dark) 70%);
+        }
+
+        .network-visual {
+            position: relative;
+            height: 600px;
+            margin-top: 3rem;
+        }
+
+        .network-node {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--accent-slate);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            text-align: center;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: nodeAppear 0.8s ease forwards;
+        }
+
+        @keyframes nodeAppear {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .network-node:hover {
+            transform: scale(1.2);
+            background: rgba(90, 125, 140, 0.3);
+            border-color: var(--text-light);
+            z-index: 10;
+        }
+
+        .network-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-slate), transparent);
+            transform-origin: left center;
+            opacity: 0.3;
+            animation: lineGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes lineGlow {
+
+            0%,
+            100% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: var(--bg-darker);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo .domain {
+            color: var(--accent-sienna);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-slate);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+
+            .problem-content,
+            .solution-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .chaotic-visual,
+            .elegant-visual {
+                height: 400px;
+            }
+
+            .comparison-container {
+                height: 500px;
+            }
+
+            .network-visual {
+                height: 500px;
+            }
+        }
+
+        /* Utility Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
+
 <body>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
 
+    <!-- Hero Section -->
+    <section id="hero">
+        <canvas class="canvas-bg" id="heroCanvas"></canvas>
+        <div class="container">
+            <div class="hero-content">
+                <p class="subtitle">An Interactive Exploration</p>
+                <h1>Digital<br>Provenance</h1>
+                <p style="text-align: center; margin: 0 auto;">The art of knowing the self</p>
+            </div>
+            <div class="scroll-hint">Scroll to explore</div>
+        </div>
+    </section>
 
-
-    <div class="container">
-        <main>
-            <article>
-                <header>
-                    <h1>Digital Provenance: The Art of Knowing the Self</h1>
-                    <p class="subtitle">A Foundational Thesis on the Successor to "Soulbound" and the Future of Digital Identity</p>
-                </header>
-
-                <p>A revolutionary technology is trapped inside a hostile metaphor.</p>
-                <p class="intro-summary">The concept is profound: a permanent, non-transferable, verifiable digital record of who you are and what you've done. It is the bedrock upon which a future of authentic digital identity can finally be built.</p>
-                
-                <p>But this elegant, humanistic technology has been given a name drawn from the mechanics of a fantasy video game: the <strong>"Soulbound Token."</strong></p>
-                <p>This is not a failure of the technology. It is a catastrophic failure of language. It is a failure of metaphor. And it is a failure that actively undermines the very concept it seeks to represent.</p> 
-                <p>As Digital Archaeologists, our work is to excavate the underlying human need and find the language—the <em>landmark</em>—that truly honors it. The name "Soulbound" is not a landmark; it is a locked gate, confusing and slightly ominous, preventing the very people this technology could empower from understanding its promise.</p>
-                <p>The technology is sound. The <em>language</em> must be unearthed. The future of identity is not "Soulbound." It is <strong>"Digital Provenance."</strong></p>
-
-                <h2>Part 1: The Dig — Unearthing the Meaning of "Provenance"</h2>
-                <p>The Digital Archaeologist knows that the most powerful metaphors are not invented; they are excavated. The resonance of "Digital Provenance" comes from the deep cultural and linguistic "narrative gravity" of provenance itself.</p>
-                <p>"Provenance" is a word we already understand, drawn from the meticulous worlds of art history, archival science, and curatorship. It refers to the verifiable history of an object—its origin, its ownership, its journey through time.<sup id="ref-1"><a href="#fn-1">[1]</a></sup> It is a word steeped in authenticity, value, and <em>story</em>.</p>
-                <p>Etymologically, it comes from the French <em>provenir</em>, "to come forth, originate." It speaks to origins, to the "first shard" of authenticity. It is a word that carries inherent weight and seriousness.</p>
-                <p>Culturally, provenance is the bedrock of trust for high-value assets:</p>
-                <ul>
-                    <li><strong>In Art:</strong> The provenance of a painting is its documented history, the chain of custody that proves it is not a forgery. It is the source of its legitimacy and a significant part of its value.</li>
-                    <li><strong>In Antiquities:</strong> The provenance of an artifact verifies its historical context and authenticity, distinguishing a priceless relic from a mere replica.</li>
-                    <li><strong>In Archival Science:</strong> Provenance ensures the integrity and reliability of historical records by documenting their origin and custody.</li>
-                </ul>
-                <p>Provenance is the <em>art of knowing</em>. It is the discipline of verifiable history. It is a concept grounded in meticulous research, tangible evidence, and the establishment of indisputable truth. It is elegant, academic, and deeply aligned with the values of authenticity and enduring value.</p>
-
-                <h2>Part 2: The Problem of Proof & The "Soulbound" Attempt</h2>
-                <p>Before critiquing the name, let's get to the heart of the human problem this technology tries to solve, speaking plainly. In our digital lives, how do we <em>really</em> prove who we are and what we've done? Forget fancy terms for a moment. Think about real life:</p>
-                <ul>
-                    <li>How does a potential employer <em>know</em> you actually earned that degree, without calling the university?</li>
-                    <li>How does an online group <em>know</em> who its real members are, without forcing everyone to share intrusive personal details?</li>
-                    <li>How do you build an online reputation based on <em>actual skills and accomplishments</em> that you own, that can't be easily faked or erased by a platform?</li>
-                </ul>
-                <p>The internet we have today mostly fails at this. Our identities are scattered, often based on claims anyone can type into a profile ("Trust me, I'm a certified expert!"). Our data is owned by platforms, not by us. This lack of reliable, user-controlled proof makes it hard to build real trust online.</p>
-                <p>Enter the <em>idea</em> behind what got awkwardly named the <strong>"Soulbound Token" (SBT)</strong>.<sup id="ref-2"><a href="#fn-2">[2]</a></sup> The core concept, stripped of jargon, is simple and powerful: <strong>Create secure, digital proof of your achievements and affiliations that you control, but that you cannot fake or transfer.</strong></p>
-                <p>Think of it like building a <strong>"Digital Trophy Case"</strong> or a <strong>"Permanent Achievement Record"</strong> inside your own secure digital wallet (what the technical paper calls a "Soul"). Instead of physical trophies or paper certificates, this case holds official digital proofs:</p>
-                <ul>
-                    <li>A <strong>digital proof</strong> from your university, verifying your degree beyond doubt.</li>
-                    <li>A <strong>digital proof</strong> from an employer, confirming you worked there.</li>
-                    <li>A <strong>digital proof</strong> from a professional group, showing your certification.</li>
-                    <li>A <strong>digital proof</strong> from a community, confirming your membership.</li>
-                </ul>
-                <p>The cleverness comes from using blockchain technology to give these proofs two crucial superpowers:</p>
-                <ol>
-                    <li><strong>Verifiable Beyond Doubt:</strong> Because these proofs are recorded using secure cryptography on a shared digital ledger (the blockchain), anyone you show them to can instantly confirm they are real and were issued by the claimed authority (the university, the employer) directly to <em>your</em> digital wallet. No phone calls, no background checks needed. The proof is built-in.</li>
-                    <li><strong>Non-Transferable (Like a Real Achievement):</strong> This is the key insight. Unlike a digital collectible (NFT) or money, you <em>cannot</em> sell, trade, or give away these proofs. Your digital degree proof is permanently linked to <em>your</em> digital wallet, just like your real-world degree belongs only to you. You can't give your marathon medal to someone who didn't run the race. This ensures the proofs represent <em>your</em> genuine accomplishments and affiliations. <strong>You earned it, you own the proof, and you can't fake it.</strong></li>
-                </ol>
-                <p>The <em>technological concept</em> here is revolutionary. It offers a path to an internet where trust is based on verifiable facts, not just claims. It could enable safer online communities, fairer reputation systems, even new forms of lending based on proven history rather than just assets. It's about empowering individuals with control over their own verified story.</p>
-                <p><em>However</em>, the <em>name chosen</em> for this powerful concept – "Soulbound" – is where the potential stalls. It's a name born from a niche subculture that actively hinders broader understanding and adoption. Its origins, acknowledged by its creators, lie in the video game <em>World of Warcraft</em>, where "soulbound" items are pieces of gear permanently attached to a player's character.<sup id="ref-2"><a href="#fn-2">[2]</a></sup> While a technically accurate analogy for non-transferability <em>within that specific context</em>, applying it as the <em>universal term for human identity</em> creates immediate problems for regular people:</p>
-                <ol>
-                    <li><strong>It Sounds Weird and Intimidating:</strong> If you haven't played the game, "Soulbound" evokes strange, mystical, or even slightly creepy connotations (spiritual contracts, being trapped). It doesn't sound like a trustworthy system for your personal information; it sounds like jargon from a fantasy novel.</li> 
-                    <li><strong>It Feels Demeaning:</strong> Associating your real-world achievements—your education, your career—with <em>video game items</em> feels fundamentally unserious. It trivializes the very accomplishments the technology is meant to honor. Your degree isn't "loot."</li>
-                    <li><strong>It's Opaque:</strong> The name explains the <em>technical limitation</em> (non-transferability) from an insider's view, not the <em>human benefit</em> (authentic proof, earned reputation). It requires explanation, acting as a barrier.</li>
-                    <li><strong>It Feels Passive:</strong> "Bound" suggests being stuck <em>with</em> something, controlled <em>by</em> the system, rather than being empowered <em>by</em> it. It lacks a sense of personal agency.</li>
-                </ol>
-                <p>"Soulbound" is an "address" pointing to a game mechanic. It lacks dignity and relies on borrowed, niche gravity. It will never be the welcoming "landmark" needed to bring this crucial technology to everyone.</p>
-
-                <!-- CORRECTED Diagram -->
-                <figure class="article-diagram">
-                    <svg width="720" height="420" viewBox="0 0 720 420" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <style>
-                            .title-font { font-family: 'Lora', serif; font-weight: 700; font-size: 24px; fill: #2E2E2E; }
-                            .desc-font { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 16px; fill: #5A7D8C; }
-                            .keyword-font { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px; }
-                            .keyword-font-sienna { fill: #A95C3D; }
-                            .keyword-font-slate { fill: #5A7D8C; }
-                            .icon-slate { fill: #5A7D8C; }
-                            .icon-sienna { fill: #A95C3D; }
-                        </style>
-                        <g transform="translate(40, 40)">
-                            <text x="0" y="20" class="title-font">Soulbound Token</text>
-                            <g class="icon-slate" transform="translate(0, 60) scale(1.2)">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10 13C10 10.2386 12.2386 8 15 8H20V6H15C11.134 6 8 9.13401 8 13V18H10V13ZM30 13C30 10.2386 27.7614 8 25 8H20V6H25C28.866 6 32 9.13401 32 13V18H30V13ZM12 28C12 29.1046 12.8954 30 14 30H26C27.1046 30 28 29.1046 28 28V22H12V28ZM10 22V28C10 30.2091 11.7909 32 14 32H26C28.2091 32 30 30.2091 30 28V22H10Z" fill="currentColor"/>
-                                <path d="M16 16H24V20H16V16Z" fill="currentColor"/>
-                            </g>
-                            <text x="0" y="140" class="desc-font">A technical metaphor based on a</text>
-                            <text x="0" y="165" class="desc-font">video game mechanic.</text>
-                            
-                            <text x="0" y="215" class="keyword-font keyword-font-slate">PASSIVE (Feels done to you)</text>
-                            <text x="0" y="245" class="keyword-font keyword-font-slate">BINDING (A digital "curse")</text>
-                            <text x="0" y="275" class="keyword-font keyword-font-slate">DISEMPOWERING (Lacks agency)</text>
-                            <text x="0" y="305" class="keyword-font keyword-font-slate">OPAQUE (Technical jargon)</text>
-                            <text x="0" y="335" class="keyword-font keyword-font-slate">DEMEANING (Trivializes achievement)</text>
-                        </g>
-                        <line x1="360" y1="40" x2="360" y2="380" stroke="#D1D1D1" stroke-width="1"/>
-                        <g transform="translate(400, 40)">
-                            <text x="0" y="20" class="title-font">Digital Provenance</text>
-                            <g class="icon-sienna" transform="translate(0, 55) scale(1.2)">
-                               <path fill-rule="evenodd" clip-rule="evenodd" d="M24.5 14C24.5 19.799 19.799 24.5 14 24.5C8.20101 24.5 3.5 19.799 3.5 14C3.5 8.20101 8.20101 3.5 14 3.5C19.799 3.5 24.5 8.20101 24.5 14ZM22.5 14C22.5 18.6944 18.6944 22.5 14 22.5C9.30558 22.5 5.5 18.6944 5.5 14C5.5 9.30558 9.30558 5.5 14 5.5C18.6944 5.5 22.5 9.30558 22.5 14Z" fill="currentColor"/>
-                               <path fill-rule="evenodd" clip-rule="evenodd" d="M21.4463 21.4463C21.9344 20.9582 22.7155 20.9582 23.2036 21.4463L30.071 28.3137C30.5591 28.8018 30.5591 29.5829 30.071 30.071C29.5829 30.5591 28.8018 30.5591 28.3137 30.071L21.4463 23.2036C20.9582 22.7155 20.9582 21.9344 21.4463 21.4463Z" fill="currentColor"/>
-                            </g>
-                            <text x="0" y="140" class="desc-font">A humanistic metaphor based on</text>
-                            <text x="0" y="165" class="desc-font">curation and authenticity.</text>
-                            
-                            <text x="0" y="215" class="keyword-font keyword-font-sienna">ACTIVE (Something you curate)</text>
-                            <text x="0" y="245" class="keyword-font keyword-font-sienna">EMPOWERING (Grants agency)</text>
-                            <text x="0" y="275" class="keyword-font keyword-font-sienna">INTUITIVE (Grounded in art/history)</text>
-                            <text x="0" y="305" class="keyword-font keyword-font-sienna">DIGNIFIED (Respects the self)</text>
-                            <text x="0" y="335" class="keyword-font keyword-font-sienna">AUTHENTIC (Verifiable history)</text>
-                        </g>
-                    </svg>
-                    <figcaption>An enhanced comparison of the "Soulbound" vs. "Provenance" metaphors (v1.8).</figcaption>
-                </figure>
-                <!-- End Diagram -->
-
-
-                <h2>Part 3: The Thesis — Digital Provenance as Curated Self</h2>
-                <p>This is the corrective thesis, the bridge for the regular person.</p>
-                <p>The <em>concept</em> of a verifiable, non-transferable digital record of your achievements and affiliations is powerful. The failure lies in the <em>metaphor</em> used to describe it. Where "Soulbound" evokes a sense of being passively <em>bound</em> like an object in a game, <strong>"Digital Provenance"</strong> speaks to the active <em>curation</em> of your personal history, like an artist signing their work or a museum documenting its collection.</p>
-                <p>This new form of verifiable, non-transferable digital identity should not be called a "Soulbound Token." It should be called "Digital Provenance."</p>
-                <p>This linguistic shift moves the concept from the obscure jargon of fantasy gaming to the universally understood realm of <strong>authenticity, history, and value</strong>. It reframes the entire interaction from one of <em>passive binding</em> to one of <em>active curation</em>.</p>
-                <p>The strategic and humanistic power of this new metaphor is profound, making the concept accessible and appealing:</p>
-                <ol>
-                    <li><strong>It Is Dignified and Respectful, Not Demeaning.</strong> "Provenance" is a term we associate with valuable, authentic things—art, historical documents, fine craftsmanship (as explored in Part 1). Applying it to <em>your personal history</em> makes a powerful statement: <strong>Your self, your story, your accomplishments—these are important, verifiable assets deserving of respect.</strong> It elevates the concept with the seriousness it deserves, directly countering the trivializing "Soulbound" metaphor.</li>
-                    <li><strong>It Is Intuitive and Grounded, Not Opaque.</strong> Most people understand the basic idea of provenance: knowing where something came from, proving its history is real. It connects to familiar concepts like tracking the history of a valuable painting or verifying the source of an important document. This makes "Digital Provenance" feel grounded and intuitive, easily grasped without needing to understand video game mechanics. It provides the "regular person" explanation that "Soulbound" lacks.</li>
-                    <li><strong>It Is Active and Empowering, Not Passive.</strong> "Provenance" implies a <em>story</em> built over time, a history that is carefully <em>recorded</em> and <em>verified</em>. When applied to you, it positions you not as someone passively "bound" to tokens, but as the <strong>curator of your own verifiable history</strong>. You actively collect, manage, and choose how to <em>present</em> the digital proofs that make up your Digital Provenance. This aligns perfectly with the core promise of user control and agency.</li>
-                    <li><strong>It Reclaims Non-Transferability by Anchoring to the Self.</strong> This is where we must draw a clear line against the historical baggage of the word. Yes, the provenance of a <em>painting</em> travels with the painting if it's sold – because the <em>subject</em> is a transferable object. But this is a category error when applied to identity. <strong>The nature of provenance is dictated by the nature of its subject.</strong> When the subject is <em>you</em>—your skills, your experiences, your relationships—the rules fundamentally change.
-                    <p>You cannot auction off your academic transcript any more than you can sell your memories. Your history is not chattel. Your degree is evidence of <em>your</em> effort, not a tradable commodity. Therefore, <strong>Digital Provenance, when anchored to the individual,</strong> <em><strong>inherently absorbs the non-transferable nature of its subject</strong></em><strong>.</strong> It is not merely a record <em>about</em> you; it is the verifiable signature <em>of</em> you, intrinsically personal and non-delegable. This isn't a limitation; it's the source of its authenticity. It captures the vital innovation of the SBT concept (non-transferability) naturally and correctly, severing it from the flawed, object-based assumptions that haunt both traditional provenance and the "Soulbound" metaphor.</p>
-                    </li>
-                </ol>
- 
-                <h3>Part 3.5: The Principles of Curating Digital Provenance</h3>
-                <p>Adopting the metaphor of "Provenance" implies a shift from passive holding to active curation. The curator of a great collection does not simply accumulate; they select, contextualize, and present. The principles for curating the self are no different:</p>
-                <ul>
-                    <li><strong>The Principle of Intentionality:</strong> The curator decides what to add to their collection. This is the opposite of the current web, where platforms collect data by default. The user must be the one to actively seek and accept a Verifiable Credential to add to their Provenance.</li>
-                    <li><strong>The Principle of Context:</strong> A credential is not just a data point; it's a story. The curator has the right and the ability to frame their credentials, presenting them not as a sterile list, but as a narrative of their journey.</li>
-                    <li><strong>The Principle of Selective Disclosure:</strong> A museum curator does not display every item in the archive at once. They select what is relevant for a given exhibition. This is the principle of only revealing necessary credentials for a specific interaction, preserving the privacy and integrity of the rest of their collection, sometimes referred to as a "Veiled Proof".<sup id="ref-3"><a href="#fn-3">[3]</a></sup></li>
-                </ul>
-
-                <h3>Part 3.6: The Great Filter: Challenges in the Lifecycle of Provenance</h3>
-                <p>A credible system of Digital Provenance cannot ignore the complexities of real life. People change, credentials expire, certifications lapse, affiliations are severed, and sometimes, records are just wrong.</p>
-                <p>The idea of a purely static, immutable on-chain identity is brittle and unrealistic. Dealing with this lifecycle, however, forces us to confront the fundamental challenges inherent in any system that attempts to place permanent, verifiable identity markers onto a public ledger. This is the "Great Filter" that will determine if this technology becomes empowering or dystopian.</p>
-                <p>A simplistic "burn function" for revoking credentials is mechanically flawed. It often requires the holder's cooperation and, more importantly, erases history instead of updating it—an act antithetical to the very principle of provenance. A more robust approach involves Provenance Invalidation Credentials. Here, an issuer mints a new, linked credential signifying a change in status (e.g., "Expired," "Suspended"). This preserves the full historical record ("This was valid, now it is not") and allows querying applications to interpret the current state accurately.</p>
-                <p>While mechanically superior, this mechanism does not magically solve the deeper questions. Instead, it highlights the inherent, high-stakes risks within the Digital Provenance concept:</p>
-                <ul>
-                    <li><strong>The Risk of Malicious Issuers:</strong> The entire system rests on the integrity of the issuing authorities. A "Provenance Invalidation Credential" is a powerful tool. What safeguards prevent a disgruntled former employer or a compromised university from maliciously "invalidating" a legitimate degree or work history, creating a permanent, public, and false mark of shame?</li>
-                    <li><strong>The "Social Credit" Dystopia:</strong> How do we prevent this system from calcifying into a rigid social credit framework? A transparent, permanent, verifiable record of one's affiliations, lapses, and "invalidations" could be weaponized by automated systems, limiting future opportunities or the possibility of personal evolution. The "right to be forgotten" and the "right to a fresh start" are critical human needs that a purely technical system does not understand.</li>
-                    <li><strong>The Permanence of Stigma:</strong> How does a system balance verifiable achievements with verifiable negative marks? Does a publicly visible history of an expired license, a revoked membership, or a corrected error create an undue and permanent stigma that outweighs its informational value?</li>
-                    <li><strong>The Trust Gap:</strong> The system must acknowledge the gap between the digital record and lived reality. An on-chain invalidation token cannot capture the nuance of a real-world dispute. Trust, therefore, cannot be "solved" by code alone; it must be supported by human-centric governance and clear avenues for appeal.</li>
-                </ul>
-                <p>Addressing these challenges is not merely a technical problem; it is the central ethical and design problem. The concept of Digital Provenance provides a more dignified and accurate language for this endeavor, but the hard work of building just and resilient systems—systems that can handle appeals, prevent malicious action, and protect human dignity—remains.</p>
-                
-                <h2>Part 4: The Vision — A World Built on Verifiable Selves</h2>
-                <p>Reframing this technology is the first step to building a world that <em>uses</em> it. A world built on "Digital Provenance" is a world where authenticity is the default.</p>
-                
-                <h3>The End of the "Trust Me" Internet</h3>
-                <p>Imagine a web where claims are verifiable, instantly and cryptographically.</p>
-                <ul>
-                    <li><strong>Professional Networks:</strong> Instead of relying on self-reported LinkedIn profiles, imagine a network where professional experience and certifications are represented by verifiable credentials, issued directly by employers and institutions, forming an immutable part of an individual's Digital Provenance.</li>
-                    <li><strong>Decentralized Communities:</strong> Imagine online communities (such as DAOs or potential "Mycelial Ventures") where membership, roles, and voting rights are tied to verifiable contributions and reputation, recorded as part of each member's Digital Provenance, making governance transparent and Sybil-resistant.<sup id="ref-4"><a href="#fn-4">[4]</a></sup></li>
-                    <li><strong>Education:</strong> Imagine university degrees and lifelong learning certificates issued as permanent, verifiable components of a student's Digital Provenance, instantly shareable with potential employers or further education institutions worldwide.</li>
-                    <li><strong>Creative Attribution:</strong> Imagine artists, writers, and musicians whose work is intrinsically linked to their Digital Provenance, providing an unbreakable chain of authorship and combating plagiarism or misattribution in the age of AI.</li>
-                </ul>
-
-                <h3>The Architecture of Digital Sovereignty</h3>
-                <p>This is the practical foundation for true <strong>Self-Sovereign Identity (SSI)</strong>.<sup id="ref-5"><a href="#fn-5">[5]</a></sup> An individual cannot be sovereign if their identity is fragmented across dozens of insecure platforms, or if their reputation can be easily faked or stolen.</p>
-                <p>Digital Provenance provides the <em>anchor</em>. It is the curated, verifiable, non-transferable record of the self, controlled by the individual, that allows them to navigate the digital world with confidence and agency. It is the necessary architecture for a web built on earned trust, not blind faith.</p>
-
-                <h2>Conclusion: The Archaeologist's Vow</h2>
-                <p>Language is destiny. The metaphors we choose shape the future we build.</p>
-                <p>We cannot build a dignified, authentic, and human-centric digital world using the shallow, unserious, and intimidating language of gaming mechanics. "Soulbound Token" is an artifact of a culture that prioritized technical novelty over human understanding. It is a name that diminishes the profound potential of its own creation.</p>
-                <p>"Digital Provenance" is the successor. It is the "landmark."</p>
-                <p>It is a term that carries the weight of history, the rigor of verification, and the dignity of the curated self. It reframes digital identity as an act of intentional creation, not passive accumulation. It provides the "Grounded & Human" language needed to bring this revolutionary technology out of the subculture and into the mainstream, making its power accessible to everyone.</p>
-                <p>This is the work of the Digital Archaeologist: to excavate the authentic human need buried beneath the jargon, and to forge the landmark terms that allow us to build a better future. "Digital Provenance" is one of those terms. It is time to champion it.</p>
-
-                <section class="footnotes">
-                    <h2>References</h2>
-                    <ol>
-                        <li id="fn-1"><p><em>Getty Research Institute</em>. (n.d.). "Art & Architecture Thesaurus Online: Provenance". (Defines provenance in the art historical context as the history of ownership of a valued object). <a href="#ref-1" class="footnote-back-link" title="Jump back to footnote 1 in the text">↩</a></p></li>
-                        <li id="fn-2"><p>Weyl, E. G., Ohlhaver, P., & Buterin, V. (2022). "Decentralized Society: Finding Web3's Soul." <em>Available at SSRN 4105763</em>. (The original paper introducing SBTs and acknowledging the <em>World of Warcraft</em> origin). <a href="#ref-2" class="footnote-back-link" title="Jump back to footnote 2 in the text">↩</a></p></li>
-                        <li id="fn-3"><p>Sporny, M., Longley, D., et al. (2019). "Verifiable Credentials Data Model 1.0". <em>W3C Recommendation</em>. (Defines the standard for VCs, including principles of selective disclosure and privacy). Available: <a href="https://www.w3.org/TR/vc-data-model/">https://www.w3.org/TR/vc-data-model/</a> <a href="#ref-3" class="footnote-back-link" title="Jump back to footnote 3 in the text">↩</a></p></li>
-                        <li id="fn-4"><p>Zargham, M., et al. (2021). "A Computational Framework for Reputation Systems in Decentralized Autonomous Organizations." <em>Frontiers in Blockchain</em>, 4, 678881. (Discusses DAO governance and reputation). Available: <a href="https://doi.org/10.3389/fbloc.2021.678881">https://doi.org/10.3389/fbloc.2021.678881</a> <a href="#ref-4" class="footnote-back-link" title="Jump back to footnote 4 in the text">↩</a></p></li>
-                        <li id="fn-5"><p>Allen, C. (2016). "The Path to Self-Sovereign Identity". <em>Life With Alacrity blog</em>. (A foundational essay outlining the principles of SSI). Available: <a href="http://www.lifewithalacrity.com/2016/04/the-path-to-self-soverereign-identity.html">http://www.lifewithalacrity.com/2016/04/the-path-to-self-soverereign-identity.html</a> <a href="#ref-5" class="footnote-back-link" title="Jump back to footnote 5 in the text">↩</a></p></li>
-                    </ol>
-                </section>
-            </article>
-        </main>
-        <aside>
-            <div class="metadata-box">
-                <h2>Thesis Details</h2>
-                <div class="metadata-item">
-                    <dt>Category</dt>
-                    <dd>Cornerstone Thesis</dd>
+    <!-- Problem Section -->
+    <section id="problem">
+        <div class="container">
+            <div class="problem-content">
+                <div class="fade-in">
+                    <h2 style="color: var(--accent-sienna);">Soulbound</h2>
+                    <p>A revolutionary technology trapped inside a hostile metaphor. Drawn from video game mechanics,
+                        the term "Soulbound Token" evokes binding, passivity, and confusion.</p>
+                    <ul class="keyword-list">
+                        <li>Passive & Binding</li>
+                        <li>Opaque Jargon</li>
+                        <li>Demeaning Context</li>
+                        <li>Lacks Dignity</li>
+                        <li>Disempowering</li>
+                    </ul>
                 </div>
-                <div class="metadata-item">
-                    <dt>Core Concepts</dt>
-                    <dd><code>Digital Provenance</code><br><code>Verifiable Self</code><br><code>Digital Sovereignty</code></dd>
-                </div>
-                <div class="metadata-item">
-                    <dt>Domain Artifact</dt>
-                    <dd><code>soulbound.im</code></dd>
-                </div>
-                <div class="metadata-item">
-                    <dt>Date Published</dt>
-                    <dd>October 29, 2025</dd>
-                </div>
-                <div class="logo-footer">
-                    <a href="https://unearth.im/" target="_blank" rel="noopener noreferrer" style="border-bottom: none;">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 60" width="120">
-                            <text x="50%" y="50%" font-family="'Inter', sans-serif" font-size="50" font-weight="600" text-anchor="middle" dominant-baseline="middle">
-                                <tspan fill="#2E2E2E">unearth</tspan><tspan fill="#A95C3D">.im</tspan>
-                            </text>
-                        </svg>
-                    </a>
+                <div class="chaotic-visual fade-in">
+                    <div class="binding-chain">
+                        <div class="chain-link" style="top: 20%; left: 30%; animation-delay: 0s;"></div>
+                        <div class="chain-link" style="top: 40%; left: 60%; animation-delay: 0.5s;"></div>
+                        <div class="chain-link" style="top: 60%; left: 20%; animation-delay: 1s;"></div>
+                        <div class="chain-link" style="top: 70%; left: 70%; animation-delay: 1.5s;"></div>
+                        <div class="chain-link" style="top: 30%; left: 80%; animation-delay: 2s;"></div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="series-box">
-                <h2>Provenance & Identity Series</h2>
-                                  
-                <div class="series-item current">
-                    <h3>1. Digital Provenance: The Art of Knowing the Self</h3>
-                    <p class="series-meta">You are here</p>
-                </div>
+        </div>
+    </section>
 
-                <div class="series-item">
-                    <a href="https://unearth.im/fieldnotes/post/authenticateim-the-gravity-of-certainty" target="_blank" rel="noopener noreferrer">
-                        <h3>2. The Gravity of Certainty</h3>
-                        <p class="series-meta">Field Note on authenticate.im</p>
-                    </a>
+    <!-- Solution Section -->
+    <section id="solution">
+        <div class="container">
+            <div class="solution-content">
+                <div class="elegant-visual fade-in">
+                    <div class="provenance-grid">
+                        <div class="provenance-item">Education</div>
+                        <div class="provenance-item">Skills</div>
+                        <div class="provenance-item">Experience</div>
+                        <div class="provenance-item">Certifications</div>
+                        <div class="provenance-item">Community</div>
+                        <div class="provenance-item">Achievements</div>
+                        <div class="provenance-item">Contributions</div>
+                        <div class="provenance-item">Reputation</div>
+                        <div class="provenance-item">Identity</div>
+                    </div>
                 </div>
-
-                
-                <div class="series-item">
-                     <a href="https://sovereignty.im" target="_blank" rel="noopener noreferrer">
-                        <h3>3. The Seven Principles of Digital Sovereignty</h3>
-                        <p class="series-meta">Foundry Constitution</p>
-                    </a>
+                <div class="fade-in">
+                    <h2 style="color: var(--accent-slate);">Digital Provenance</h2>
+                    <p>A humanistic metaphor grounded in art, curation, and authenticity. Digital Provenance speaks to
+                        the active curation of your verifiable history—dignified, intuitive, and empowering.</p>
+                    <ul class="keyword-list" style="border-color: rgba(90, 125, 140, 0.2);">
+                        <li style="color: var(--accent-slate);">Active & Curated</li>
+                        <li style="color: var(--accent-slate);">Intuitive Language</li>
+                        <li style="color: var(--accent-slate);">Dignified Context</li>
+                        <li style="color: var(--accent-slate);">Empowering Agency</li>
+                        <li style="color: var(--accent-slate);">Authentic History</li>
+                    </ul>
                 </div>
-
-                <a href="https://unearth.im/museum/" target="_blank" rel="noopener noreferrer" class="series-cta">Explore the Full Museum &rarr;</a>
             </div>
+        </div>
+    </section>
 
-        </aside>
-    </div>
+    <!-- Comparison Section -->
+    <section id="comparison">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 2rem;" class="fade-in">
+                <h2>Experience the Difference</h2>
+                <p style="margin: 0 auto;">Drag the slider to compare both metaphors</p>
+            </div>
+            <div class="comparison-container fade-in">
+                <div class="comparison-side comparison-left">
+                    <h3 style="color: var(--accent-sienna);">Soulbound Token</h3>
+                    <p style="text-align: center;">Bound like an item in a game. Passive. Confusing. Demeaning.</p>
+                </div>
+                <div class="comparison-side comparison-right">
+                    <h3 style="color: var(--accent-slate);">Digital Provenance</h3>
+                    <p style="text-align: center;">Curated like art in a museum. Active. Intuitive. Dignified.</p>
+                </div>
+                <div class="comparison-slider" id="comparisonSlider">
+                    <div class="slider-handle"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section id="vision">
+        <div class="container">
+            <div style="text-align: center;" class="fade-in">
+                <h2>A World Built on Verifiable Selves</h2>
+                <p style="margin: 0 auto;">An interconnected network of authentic, verified identities—where trust is
+                    the default.</p>
+            </div>
+            <div class="network-visual" id="networkVisual">
+                <canvas class="canvas-bg" id="networkCanvas"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            unearth<span class="domain">.im</span>
+        </div>
+        <p style="color: var(--text-dim); font-size: 0.9rem;">Digital Archaeology · Landmark Terms · Human-Centric Web3
+        </p>
+        <div class="footer-links">
+            <a href="https://unearth.im" target="_blank">Museum</a>
+            <a href="https://unearth.im/fieldnotes" target="_blank">Field Notes</a>
+            <a href="https://sovereignty.im" target="_blank">Sovereignty</a>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Progress
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.scrollY / scrollHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+
+                    // Animate keyword lists
+                    if (entry.target.querySelector('.keyword-list')) {
+                        const items = entry.target.querySelectorAll('.keyword-list li');
+                        items.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('visible');
+                            }, index * 100);
+                        });
+                    }
+
+                    // Animate provenance items
+                    if (entry.target.querySelector('.provenance-grid')) {
+                        const items = entry.target.querySelectorAll('.provenance-item');
+                        items.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('visible');
+                            }, index * 100);
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Hero Particle System
+        const heroCanvas = document.getElementById('heroCanvas');
+        const heroCtx = heroCanvas.getContext('2d');
+        let heroParticles = [];
+        let mouseX = 0;
+        let mouseY = 0;
+
+        function resizeHeroCanvas() {
+            heroCanvas.width = heroCanvas.offsetWidth;
+            heroCanvas.height = heroCanvas.offsetHeight;
+            initHeroParticles();
+        }
+
+        function initHeroParticles() {
+            heroParticles = [];
+            const particleCount = Math.floor((heroCanvas.width * heroCanvas.height) / 15000);
+            for (let i = 0; i < particleCount; i++) {
+                heroParticles.push({
+                    x: Math.random() * heroCanvas.width,
+                    y: Math.random() * heroCanvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    radius: Math.random() * 2 + 1,
+                    opacity: Math.random() * 0.5 + 0.2
+                });
+            }
+        }
+
+        function drawHeroParticles() {
+            heroCtx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+
+            heroParticles.forEach((particle, i) => {
+                // Update position
+                particle.x += particle.vx;
+                particle.y += particle.vy;
+
+                // Mouse interaction
+                const dx = mouseX - particle.x;
+                const dy = mouseY - particle.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < 150) {
+                    const force = (150 - distance) / 150;
+                    particle.x -= dx * force * 0.03;
+                    particle.y -= dy * force * 0.03;
+                }
+
+                // Boundary check
+                if (particle.x < 0 || particle.x > heroCanvas.width) particle.vx *= -1;
+                if (particle.y < 0 || particle.y > heroCanvas.height) particle.vy *= -1;
+
+                // Draw particle
+                heroCtx.beginPath();
+                heroCtx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                heroCtx.fillStyle = `rgba(169, 92, 61, ${particle.opacity})`;
+                heroCtx.fill();
+
+                // Draw connections
+                heroParticles.slice(i + 1).forEach(otherParticle => {
+                    const dx = particle.x - otherParticle.x;
+                    const dy = particle.y - otherParticle.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 120) {
+                        heroCtx.beginPath();
+                        heroCtx.moveTo(particle.x, particle.y);
+                        heroCtx.lineTo(otherParticle.x, otherParticle.y);
+                        heroCtx.strokeStyle = `rgba(90, 125, 140, ${0.2 * (1 - distance / 120)})`;
+                        heroCtx.lineWidth = 0.5;
+                        heroCtx.stroke();
+                    }
+                });
+            });
+
+            requestAnimationFrame(drawHeroParticles);
+        }
+
+        window.addEventListener('mousemove', (e) => {
+            const rect = heroCanvas.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+        });
+
+        resizeHeroCanvas();
+        drawHeroParticles();
+        window.addEventListener('resize', resizeHeroCanvas);
+
+        // Comparison Slider
+        const slider = document.getElementById('comparisonSlider');
+        const comparisonLeft = document.querySelector('.comparison-left');
+        const comparisonRight = document.querySelector('.comparison-right');
+        let isDragging = false;
+
+        slider.addEventListener('mousedown', () => isDragging = true);
+        document.addEventListener('mouseup', () => isDragging = false);
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+
+            const container = document.querySelector('.comparison-container');
+            const rect = container.getBoundingClientRect();
+            let x = e.clientX - rect.left;
+            x = Math.max(0, Math.min(x, rect.width));
+
+            const percentage = (x / rect.width) * 100;
+            slider.style.left = percentage + '%';
+            comparisonLeft.style.width = percentage + '%';
+            comparisonRight.style.width = (100 - percentage) + '%';
+        });
+
+        // Touch support for slider
+        slider.addEventListener('touchstart', () => isDragging = true);
+        document.addEventListener('touchend', () => isDragging = false);
+
+        document.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+
+            const container = document.querySelector('.comparison-container');
+            const rect = container.getBoundingClientRect();
+            let x = e.touches[0].clientX - rect.left;
+            x = Math.max(0, Math.min(x, rect.width));
+
+            const percentage = (x / rect.width) * 100;
+            slider.style.left = percentage + '%';
+            comparisonLeft.style.width = percentage + '%';
+            comparisonRight.style.width = (100 - percentage) + '%';
+        });
+
+        // Network Visualization
+        const networkCanvas = document.getElementById('networkCanvas');
+        const networkCtx = networkCanvas.getContext('2d');
+        const networkNodes = [];
+        const nodeLabels = ['You', 'Education', 'Work', 'Skills', 'Community', 'Achievements', 'Certifications', 'Reputation'];
+
+        function resizeNetworkCanvas() {
+            networkCanvas.width = networkCanvas.offsetWidth;
+            networkCanvas.height = networkCanvas.offsetHeight;
+            initNetworkNodes();
+        }
+
+        function initNetworkNodes() {
+            networkNodes.length = 0;
+            const centerX = networkCanvas.width / 2;
+            const centerY = networkCanvas.height / 2;
+            const radius = Math.min(networkCanvas.width, networkCanvas.height) * 0.35;
+
+            nodeLabels.forEach((label, i) => {
+                const angle = (i / nodeLabels.length) * Math.PI * 2 - Math.PI / 2;
+                networkNodes.push({
+                    x: centerX + Math.cos(angle) * radius,
+                    y: centerY + Math.sin(angle) * radius,
+                    label: label,
+                    pulse: Math.random() * Math.PI * 2
+                });
+            });
+        }
+
+        function drawNetwork() {
+            networkCtx.clearRect(0, 0, networkCanvas.width, networkCanvas.height);
+
+            // Draw connections
+            networkNodes.forEach((node, i) => {
+                networkNodes.slice(i + 1).forEach(otherNode => {
+                    networkCtx.beginPath();
+                    networkCtx.moveTo(node.x, node.y);
+                    networkCtx.lineTo(otherNode.x, otherNode.y);
+                    networkCtx.strokeStyle = 'rgba(90, 125, 140, 0.2)';
+                    networkCtx.lineWidth = 1;
+                    networkCtx.stroke();
+                });
+            });
+
+            // Draw nodes
+            networkNodes.forEach(node => {
+                node.pulse += 0.02;
+                const pulseSize = Math.sin(node.pulse) * 3;
+
+                // Outer glow
+                const gradient = networkCtx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 25 + pulseSize);
+                gradient.addColorStop(0, 'rgba(90, 125, 140, 0.3)');
+                gradient.addColorStop(1, 'rgba(90, 125, 140, 0)');
+
+                networkCtx.beginPath();
+                networkCtx.arc(node.x, node.y, 25 + pulseSize, 0, Math.PI * 2);
+                networkCtx.fillStyle = gradient;
+                networkCtx.fill();
+
+                // Node circle
+                networkCtx.beginPath();
+                networkCtx.arc(node.x, node.y, 15, 0, Math.PI * 2);
+                networkCtx.fillStyle = 'rgba(90, 125, 140, 0.5)';
+                networkCtx.fill();
+                networkCtx.strokeStyle = 'rgba(248, 247, 244, 0.8)';
+                networkCtx.lineWidth = 2;
+                networkCtx.stroke();
+            });
+
+            requestAnimationFrame(drawNetwork);
+        }
+
+        // Initialize network when visible
+        const networkObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    resizeNetworkCanvas();
+                    drawNetwork();
+                    networkObserver.disconnect();
+                }
+            });
+        });
+
+        networkObserver.observe(document.getElementById('vision'));
+        window.addEventListener('resize', resizeNetworkCanvas);
+    </script>
 </body>
+
 </html>
